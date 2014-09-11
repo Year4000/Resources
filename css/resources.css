@@ -7,6 +7,7 @@ h6 {
     color:#0C2140;
     border-bottom:1px solid #dedede;
 }
+
 .logo {
     text-align:center;
     margin-bottom:20px;
@@ -17,6 +18,39 @@ h6 {
     font-size:16px;
 }
 
+.navbar {
+    padding: 5px 20px;
+    background:linear-gradient(#666, #555);
+    display: none;
+    border: 0px;
+}
+
+.navbar .logo {
+    float: left;
+}
+
+.navbar .open-sidebar {
+    float: right;
+}
+
+.open-sidebar button {
+    margin-top: 5px;
+    display: block;
+    height: 40px;
+    width: 40px;
+    background-color: #666;
+    border: 1px solid #eee;
+    padding: 5px;
+}
+
+.bar {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #fff;
+    margin: 4px 0px;
+}
+
 .sidebar {
     position:fixed;
     top:0;
@@ -24,7 +58,7 @@ h6 {
     left:0;
     z-index:1000;
     display:block;
-    padding:20px;
+    padding:15px;
     overflow-x:hidden;
     overflow-y:auto;
     background:linear-gradient(#666, #555);
@@ -70,4 +104,28 @@ footer {
     text-align:center;
     bottom:0;
     height:30px;
+}
+
+pre.prettyprint {
+    overflow:auto;
+    word-wrap:normal;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        margin-bottom: 0px;
+    }
+
+    .navbar {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    section {
+        margin-top: 75px;
+        margin-left: 50px;
+    }
 }

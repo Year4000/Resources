@@ -1,4 +1,17 @@
-<aside class="sidebar span4">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="logo">
+        <a href="{{ site.url }}"><img src="{{ "/img/logo.png" | prepend: site.url }}"><br/>{{ site.title }}</a>
+    </div>
+    <div class="open-sidebar">
+        <button id="bar" class="fa" onClick="toggle_sidebar()">
+            <div class="bar">&nbsp;</div>
+            <div class="bar">&nbsp;</div>
+            <div class="bar">&nbsp;</div>
+        </button>
+    </div>
+</div>
+
+<aside id="side" class="sidebar span4">
     <div class="logo">
         <a href="{{ site.url }}"><img src="{{ "/img/logo.png" | prepend: site.url }}"><br/>{{ site.title }}</a>
     </div>
