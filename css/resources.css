@@ -111,11 +111,6 @@ pre.prettyprint {
     word-wrap: normal;
 }
 
-a {
-    overflow: auto;
-    word-wrap: normal;
-}
-
 @media screen and (max-width: 768px) {
     .logo {
         margin-bottom: 0px;
