@@ -1,23 +1,397 @@
 ---
 layout: default
 ---
+<section>
+    <article>
+        <h3>Creating a Map</h3>
+        <p>
+            You can create a map like you would do anyways, for our system MapNodes,
+            to work with the map, it must read a file named <code>map.json</code> inside of 
+            the world folder. You may also include a 64x64 png names <code>icon.png</code> and 
+            this will be used for the ping, as used on our website.
+            We use <a href="http://www.json.org/" target="_blank">JSON</a> to parse the maps. JSON is a simply
+            to learn data interchangeable format. This allows us to do more than <code>YML</code>
+            and <code>XML</code>, but still easy to learn and read. Take a look at it for help.
+            The <code>map.json</code> has several components that make MapNodes work.
+            Some of the parts are required and some are not. This section will tell you
+            how each component works and if they are required or not. 
+            <h4>Folder Structor</h4>
+            When you are done making the map it should follow this structure. You can see how
+            the current maps work <a href="https://maps.year4000.net/" target="_blank">here</a>. 
 
-<div class="home">
+<pre class="code">
+Map Name/
+  |_ world.zip
+  |   |_ region/
+  |   |_ level.dat
+  |_ map.json
+  |_ icon.png
+</pre>
+        </p>
 
-  <h1 class="page-heading">Posts</h1>
+        <h3 id="resources">Map Resources</h3>
+        <p>
+            Here are some resources to help you make a map.
+            <ul>
+                <li>
+                    Items:
+                    <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html" target="_blank">
+                        http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html
+                    </a>
+                </li>
+                <li>
+                    Enchantments:
+                    <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/enchantments/Enchantment.html" target="_blank">
+                        http://jd.bukkit.org/dev/apidocs/org/bukkit/enchantments/Enchantment.html
+                    </a>
+                </li>
+                <li>
+                    EntityType:
+                    <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/entity/EntityType.html" target="_blank">
+                        http://jd.bukkit.org/dev/apidocs/org/bukkit/entity/EntityType.html
+                    </a>
+                </li>
+                <li>
+                    DamageCause: 
+                    <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html" target="_blank">
+                    http://jd.bukkit.org/dev/apidocs/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+                    </a>
+                </li>
+                <li>
+                    ChatColors:
+                    <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/ChatColor.html" target="_blank">
+                        http://jd.bukkit.org/dev/apidocs/org/bukkit/ChatColor.html
+                    </a>
+                </li>
+                <li>
+                    Maps: 
+                    <a href="http://maps.year4000.net/" target="_blank">
+                        http://maps.year4000.net/
+                    </a>
+                </li>
+            </ul>
+        </p>
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+        <h3 id="map">Map Component</h3>
+        <p>
+            This component is required, this tells MapNodes information about
+            the map. It includes a <code>name</code>, <code>version</code>, <code>description</code>, <code>authors.</code> 
+<pre class="prettyprint linenums lang-json">
+"map": {
+    // the name of the map
+    "name": "The Map", 
 
-</div>
+    // the version of the map
+    "version": "1.0",
+
+    // the goal or description of the map
+    "description": "This is the map where you kill the other team.",
+
+    // the list of authors for the map, place your username here
+    "authors": ["Author 1", "Author 2"]
+}
+</pre>
+                </p>
+
+                <h3 id="game">Game Component</h3>
+                <p>
+                This component will control various aspects of the game, and game play
+                of each map. They do not rely on a specific game mode and can be used
+                for any maps.
+<pre class="prettyprint linenums lang-json">
+"game": {
+    // the spawn point for the world, you may use `point` and/or `min/max`
+    "spawn": [
+        {"point": {"x": 0, "y": 0, "z": 0}},
+        {"min":{"x":-0,"y":0,"z":-0},"max":{"x":0,"y":0,"z":0}}
+    ],
+
+    // can you destory blocks, you are still allowed to place blocks
+    "destructable": true,
+
+    // the world difficulty level, if not set default to world settings
+    "difficulty": 3,
+
+    // the time the world's time should be locked to
+    "timeLock": -1,
+
+    // the max height that you can place blocks
+    "worldHeight": -1,
+
+    // the time limit of the game
+    "timeLimit": 60,
+
+    // force the weather on
+    "forceWeather": false,
+
+    // the resource pack url
+    "resourcepack": "",
+
+    // damages causes that can be disabled
+    // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+" target="_blank">DamageCause</a>
+    "noDamage": [""],
+
+    // mobs that are allow to spawn
+    // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/entity/EntityType.html" target="_blank">EntityTypes</a>
+    "enabledMobs": [""],
+
+    // items that can drop from player's inventory, for all items use ["all"]
+    // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html" target="_blank">Items</a>
+    "enabledPlayerDrops": [""],
+
+    // should the game end when their is one team left
+    "elimination": false,
+
+    // the number of lives before the player must pick another team
+    "lives": -1,
+
+    // change how tnt will work
+    "tnts": {
+        // when tnt is placed should it be ignited
+        "instant": false,
+
+        // should the tnt cause block damage
+        "blockDamage": true,
+
+        // the block yield ammount in percent (0 - 100)
+        "drops": 100
+    },
+
+    // change how bows will work
+    "bows": {
+        // the entity that is fired from the bow
+        "entity": "arrow",
+
+        // the force multiplier
+        "velocity": 0
+    },
+
+    // spawn random items in chests
+    "chests": {
+        // the items that the chest could have same as kit items
+        "items": [
+            {"item": "stone_sword"}
+        ],
+
+        // the amount of stacks should be in the chests, pick at random from above
+        "amount": 10,
+
+        // should the items be in the chest at random
+        "scatter": true
+    }
+}
+</pre>
+        </p>
+
+        <h3 id="kits">Kits Component</h3>
+        <p>
+        Game kits that control what items or player aspects should be
+        apply to each kit. This is a very advance system that is very
+        customisable.
+<pre class="prettyprint linenums lang-json">
+"kits": {
+    // the id for this kit section
+    "spawn": {
+        // the armor section for this kit, the options are the same as the items bellow
+        "armor": {
+            // the item for the player's helment
+            "helmet": {"item":"leather_helmet"},
+
+            // the item for the player's chestplate
+            "chestplate": {"item":"chainmail_chestplate"},
+
+            // the item for the player's leggings
+            "leggings": {"item":"chainmail_leggings"},
+
+            // leather armor can be colored but, it default to your team color if you do not supply one
+            "boots": {"item":"chainmail_boots", "nbt": {
+                // to make it simple we only except <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/ChatColor.html" target="_blank">ChatColor</a> here
+                "display": {"color": "red"}
+            }}
+        },
+
+        // the game mode this kit should have, survival, creative, or adventure
+        "gamemode": "survival",
+
+        // is this team allowed to fly
+        "fly": false,
+
+        // the health this player will have, you can use numbers higher than default
+        "health": 20,
+
+        // the food level you can only use 1-20
+        "food": 20,
+
+        // the permissions this play will have when they get the kit
+        "permissions": [""],
+
+        // the items this kit will have
+        "items": [
+            // the only required option is `item` the reset is optional
+            // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html" target="_blank">Items</a>
+            {"item": "stone_sword"},
+
+            // this is a normal item, with out NBT data
+            {"slot": 0, "amount": 32, "damage": 2, "item": "wood"},
+
+            // this is an item with NBT data
+            {"slot": 0, "amount": 32, "damage": 2, "item": "wood", "nbt": {
+                // control the display of the item
+                "display": {"name": "&eThis is &6wood&e!", "lore": ["Line one", "Line Two"]},
+
+                // any items can have any enchantment
+                "enchantments": [
+                    // a list for allowed name see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/enchantments/Enchantment.html" target="_blank">Enchantments</a>
+                    {"name": "knockback", "level": 1}
+                ]
+            }},
+
+            // you can even have written books
+            {"item": "written_book", "nbt": {
+                // the title of the book
+                "title": "Book Title",
+
+                // the author of the book
+                "author": "ewized",
+
+                // the pages of the book
+                "pages": [
+                    "&ewe support &6ChatColors",
+                    "page two \n\n\n skip a few line"
+                ]
+            }}
+        ],
+
+        // the effects this kit will have
+        "effects": [
+            // the only required options is `name` and `duration` else if optional
+            {"name": "speed", "duration": -1},
+            /*  
+                options available for effects
+                a list for allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/potion/PotionEffectType.html" target="_blank">PotionEffects</a>
+
+                name: the name of the potion effect
+                duration: the time for it to last in secs, use -1 for forever
+                ambient: will the effect act like a beacon effect
+                showParticles: will any particles show
+            */
+            {"name": "regeneration", "duration": -1, "ambient": true, "showParticles": false}
+        ]
+    }
+}
+</pre>
+        </p>
+
+        <h3 id="teams">Teams Component</h3>
+        <p>
+        Teams are not only teams but groups. This controls how teams
+        work.
+<pre class="prettyprint linenums lang-json">
+"teams": {
+    // the id of the team, must match name but lowercase
+    "": {
+        // the display name of the team, can be any case
+        "name": "",
+
+        // the color of the team, use <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/ChatColor.html" target="_blank">ChatColor</a>.
+        "color": "",
+
+        // the id of the kit you made above
+        "kit": "",
+
+        // the size of the team defaults to 1
+        "size": 1,
+
+        // the spawns that this team will randomly spawn at, you may use `point` and/or `min/max`
+        // take a look at <a href="http://maps.year4000.net/tdm/Twin%20Towers/map.json" target="_blank">Twin Tower</a> for square spawns.
+        // take a look at <a href="http://maps.year4000.net/tdm/Desert%20Fort/map.json" target="_blank">Desert Fort</a> for multi spawns.
+        "spawns": [
+            {"point": {"x": 0, "y": 0, "z": 0}},
+            {"min":{"x":-0,"y":0,"z":-0},"max":{"x":0,"y":0,"z":0}}
+        ]
+    }
+}
+</pre>
+        </p>
+
+        <h3 id="classes">Classes Component</h3>
+        <p>
+        Classes are what custom kits you can have, after you pick a team.
+        You can make some classes for VIP's by naming the permission
+        <code>theta</code>, <code>mu</code>, <code>pi</code>, or <code>sigma</code>. 
+<pre class="prettyprint linenums lang-json">
+"classes": {
+    // the class id
+    "alchemist": {
+        // the class display name
+        "name": "Alchemist",
+
+        // the item icon
+        "icon": "potion",
+
+        // the description of what this kits has
+        "description": "You are a mast of potions and this will help you with your battle.",
+
+        // the kit id that this class will get
+        "kit": "alchemist"
+    }
+}
+</pre>
+        </p>
+
+        <h3 id="template">Map Template</h3>
+        <p>
+        Bellow is the basic <code>map.json</code> that you can make.
+        With names extracted so you may use it as template for your
+        map.
+<pre class="prettyprint linenums lang-json">
+{
+    "map": {
+        "name": "",
+        "version":"",
+        "description": "",
+        "authors": [""]
+    },
+
+    "game": {
+        "spawn": {"point": {"x": 0, "y": 0, "z": 0}},
+        "timeLimit": 60,      // must be here is elimination is not
+        "elimination": false, // must be here if timeLimit is not
+        "lives": 1            // must be with elimination or can be used by itself
+    },
+
+    "kits": {
+        "spawn": {
+            "armor": {
+                "helmet": {"item":"leather_helmet"},
+                "chestplate": {"item":"leather_chestplate"},
+                "leggings": {"item":"leather_leggings"},
+                "boots": {"item":"leather_boots"}
+            }
+        }
+    },
+
+    "teams": {
+        "red": {
+            "name": "Red",
+            "color": "red",
+            "kit": "spawn",
+            "size": 1,
+            "spawns": [{"point": {"x": 0, "y": 0, "z": 0}}]
+        },
+        "blue": {
+            "name": "Blue",
+            "color": "blue",
+            "kit": "spawn",
+            "size": 1,
+            "spawns": [{"point": {"x": 0, "y": 0,"z": 0}}]
+        }
+    }
+}
+</pre>
+        </p>
+    </article>
+</section>
