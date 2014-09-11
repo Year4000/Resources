@@ -1,0 +1,57 @@
+---
+title: A map.json Template
+layout: default
+weight: 1000
+---
+
+<h3 id="template">{{ page.title }}</h3>
+<p>
+Bellow is the basic <code>map.json</code> that you can make.
+With names extracted so you may use it as template for your
+map.
+<pre class="prettyprint linenums lang-json">
+{
+    "map": {
+        "name": "",
+        "version":"",
+        "description": "",
+        "authors": [""]
+    },
+
+    "game": {
+        "spawn": {"point": {"x": 0, "y": 0, "z": 0}},
+        "timeLimit": 60,      // must be here is elimination is not
+        "elimination": false, // must be here if timeLimit is not
+        "lives": 1            // must be with elimination or can be used by itself
+    },
+
+    "kits": {
+        "spawn": {
+            "armor": {
+                "helmet": {"item":"leather_helmet"},
+                "chestplate": {"item":"leather_chestplate"},
+                "leggings": {"item":"leather_leggings"},
+                "boots": {"item":"leather_boots"}
+            }
+        }
+    },
+
+    "teams": {
+        "red": {
+            "name": "Red",
+            "color": "red",
+            "kit": "spawn",
+            "size": 1,
+            "spawns": [{"point": {"x": 0, "y": 0, "z": 0}}]
+        },
+        "blue": {
+            "name": "Blue",
+            "color": "blue",
+            "kit": "spawn",
+            "size": 1,
+            "spawns": [{"point": {"x": 0, "y": 0,"z": 0}}]
+        }
+    }
+}
+</pre>
+</p>

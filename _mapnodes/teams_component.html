@@ -1,0 +1,37 @@
+---
+title: Teams Component
+layout: default
+weight: 105
+---
+
+<h3 id="teams">{{ page.title }}</h3>
+<p>
+Teams are not only teams but groups. This controls how teams
+work.
+<pre class="prettyprint linenums lang-json">
+"teams": {
+    // the id of the team, must match name but lowercase
+    "": {
+        // the display name of the team, can be any case
+        "name": "",
+
+        // the color of the team, use <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/ChatColor.html" target="_blank">ChatColor</a>.
+        "color": "",
+
+        // the id of the kit you made above
+        "kit": "",
+
+        // the size of the team defaults to 1
+        "size": 1,
+
+        // the spawns that this team will randomly spawn at, you may use `point` and/or `min/max`
+        // take a look at <a href="http://maps.year4000.net/tdm/Twin%20Towers/map.json" target="_blank">Twin Tower</a> for square spawns.
+        // take a look at <a href="http://maps.year4000.net/tdm/Desert%20Fort/map.json" target="_blank">Desert Fort</a> for multi spawns.
+        "spawns": [
+            {"point": {"x": 0, "y": 0, "z": 0}},
+            {"min":{"x":-0,"y":0,"z":-0},"max":{"x":0,"y":0,"z":0}}
+        ]
+    }
+}
+</pre>
+</p>

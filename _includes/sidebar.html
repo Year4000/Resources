@@ -16,13 +16,12 @@
         <a href="{{ site.url }}"><img src="{{ "/img/logo.png" | prepend: site.url }}"><br/>{{ site.title }}</a>
     </div>
     <ul class="nav-sidebar">
-        <li class="nav-sidebar-header">MapNodes</li>
-        <li><a href="#resources">Map Resources</a></li>
-        <li><a href="#map">Map Component</a></li>
-        <li><a href="#game">Game Component</a></li>
-        <li><a href="#kits">Kits Component</a></li>
-        <li><a href="#teams">Teams Component</a></li>
-        <li><a href="#classes">Classes Component</a></li>
-        <li><a href="#template">Blank Map Template</a></li>
+        {% for group in site.collections %}
+            <li class="nav-sidebar-header">{{ group[1].name }}</li>
+            {% assign group_content = group[1].docs | sort: 'weight' %}
+            {% for section in group_content %}
+                <li><a href="{{ section.url }}">{{ section.title }}</a></li>
+            {% endfor %}
+        {% endfor %}
     </ul>
 </aside>

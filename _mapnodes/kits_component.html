@@ -1,0 +1,104 @@
+---
+title: Kits Component
+layout: default
+weight: 103
+---
+
+<h3 id="kits">{{ page.title }}</h3>
+<p>
+Game kits that control what items or player aspects should be
+apply to each kit. This is a very advance system that is very
+customisable.
+<pre class="prettyprint linenums lang-json">
+"kits": {
+    // the id for this kit section
+    "spawn": {
+        // the armor section for this kit, the options are the same as the items bellow
+        "armor": {
+            // the item for the player's helment
+            "helmet": {"item":"leather_helmet"},
+
+            // the item for the player's chestplate
+            "chestplate": {"item":"chainmail_chestplate"},
+
+            // the item for the player's leggings
+            "leggings": {"item":"chainmail_leggings"},
+
+            // leather armor can be colored but, it default to your team color if you do not supply one
+            "boots": {"item":"chainmail_boots", "nbt": {
+                // to make it simple we only except <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/ChatColor.html" target="_blank">ChatColor</a> here
+                "display": {"color": "red"}
+            }}
+        },
+
+        // the game mode this kit should have, survival, creative, or adventure
+        "gamemode": "survival",
+
+        // is this team allowed to fly
+        "fly": false,
+
+        // the health this player will have, you can use numbers higher than default
+        "health": 20,
+
+        // the food level you can only use 1-20
+        "food": 20,
+
+        // the permissions this play will have when they get the kit
+        "permissions": [""],
+
+        // the items this kit will have
+        "items": [
+            // the only required option is `item` the reset is optional
+            // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html" target="_blank">Items</a>
+            {"item": "stone_sword"},
+
+            // this is a normal item, with out NBT data
+            {"slot": 0, "amount": 32, "damage": 2, "item": "wood"},
+
+            // this is an item with NBT data
+            {"slot": 0, "amount": 32, "damage": 2, "item": "wood", "nbt": {
+                // control the display of the item
+                "display": {"name": "&eThis is &6wood&e!", "lore": ["Line one", "Line Two"]},
+
+                // any items can have any enchantment
+                "enchantments": [
+                    // a list for allowed name see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/enchantments/Enchantment.html" target="_blank">Enchantments</a>
+                    {"name": "knockback", "level": 1}
+                ]
+            }},
+
+            // you can even have written books
+            {"item": "written_book", "nbt": {
+                // the title of the book
+                "title": "Book Title",
+
+                // the author of the book
+                "author": "ewized",
+
+                // the pages of the book
+                "pages": [
+                    "&ewe support &6ChatColors",
+                    "page two \n\n\n skip a few line"
+                ]
+            }}
+        ],
+
+        // the effects this kit will have
+        "effects": [
+            // the only required options is `name` and `duration` else if optional
+            {"name": "speed", "duration": -1},
+            /*  
+                options available for effects
+                a list for allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/potion/PotionEffectType.html" target="_blank">PotionEffects</a>
+
+                name: the name of the potion effect
+                duration: the time for it to last in secs, use -1 for forever
+                ambient: will the effect act like a beacon effect
+                showParticles: will any particles show
+            */
+            {"name": "regeneration", "duration": -1, "ambient": true, "showParticles": false}
+        ]
+    }
+}
+</pre>
+</p>

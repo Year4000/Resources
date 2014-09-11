@@ -12,3 +12,10 @@ twitter_username: Y4KNetwork
 
 # Build settings
 markdown: kramdown
+
+# Collections
+collections:
+  mapnodes:
+    name: MapNodes
+    output: true
+    permalink: /mapnodes/:path/
