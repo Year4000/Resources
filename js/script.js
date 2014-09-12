@@ -1,5 +1,13 @@
 var toggled = true;
 
+window.onresize=function () {
+    if (window.innerWidth > 768) {
+        document.getElementById("side").style.left = null;
+        document.getElementById("bar").style.background = null;
+        toggled = true;
+    }
+};
+
 /** Toggle the sidebar */
 function toggle_sidebar() {
     document.getElementById("bar").style.background = toggled ? "#999" : "#666";
