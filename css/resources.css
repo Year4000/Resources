@@ -8,14 +8,28 @@ h6 {
     border-bottom: 1px solid #dedede;
 }
 
+* {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)  !important;
+}
+
 .logo {
+    margin-top: 5px;
     text-align: center;
     margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #eee;
 }
 
 .logo a {
     color: #eee;
-    font-size: 16px;
+    text-decoration: none;
+}
+
+.logo img {
+    vertical-align:top;
+    width: 28px;
 }
 
 .navbar {
@@ -34,8 +48,7 @@ h6 {
 }
 
 .open-sidebar button {
-    margin-top: 5px;
-    display: block;
+    display: inline;
     height: 40px;
     width: 40px;
     background-color: #666;
@@ -121,7 +134,16 @@ pre.prettyprint {
     }
 
     .sidebar {
+        transition: all .5s ease;
+        left: -500px;
+    }
+
+    #side-logo * {
         display: none;
+    }
+
+    #side-logo {
+        height: 40px;
     }
 
     section {

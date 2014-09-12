@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="logo">
-        <a href="{{ site.url }}"><img src="{{ "/img/logo.png" | prepend: site.url }}"><br/>{{ site.title }}</a>
+        <a href="//www.year4000.net/"><img src="{{ "/img/logo.png" | prepend: site.url }}"></a> / <a href="{{ site.url }}">{{ site.title }}</a>
     </div>
     <div class="open-sidebar">
         <button id="bar" class="fa" onClick="toggle_sidebar()">
@@ -12,8 +12,8 @@
 </div>
 
 <aside id="side" class="sidebar span4">
-    <div class="logo">
-        <a href="{{ site.url }}"><img src="{{ "/img/logo.png" | prepend: site.url }}"><br/>{{ site.title }}</a>
+    <div id="side-logo" class="logo">
+        <a href="//www.year4000.net/"><img src="{{ "/img/logo.png" | prepend: site.url }}"></a> / <a href="{{ site.url }}">{{ site.title }}</a>
     </div>
     <ul class="nav-sidebar">
         {% for group in site.collections %}
