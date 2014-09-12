@@ -1,0 +1,3 @@
+script: jekyll build
+notifications:
+  email: false
