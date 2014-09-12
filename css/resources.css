@@ -113,6 +113,7 @@ section {
 }
 
 footer {
+    margin: 2% 3% 5% 240px;
     text-align: center;
     bottom: 0;
     height: 30px;
@@ -147,6 +148,9 @@ pre.prettyprint {
 
     section {
         margin-top: 75px;
+    }
+
+    footer, section {
         margin-left: 5%;
     }
 }
