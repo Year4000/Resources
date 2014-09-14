@@ -1,2 +1,7 @@
+# Project
 _site/
 .sass-cache/
+
+# IDE Settings
+*.sublime-project
+*.sublime-workspace
