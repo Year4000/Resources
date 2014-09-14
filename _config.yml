@@ -19,3 +19,7 @@ collections:
     name: MapNodes
     output: true
     permalink: /mapnodes/:path/
+  locales:
+    name: Locales
+    output: true
+    permalink: /locales/:path/
