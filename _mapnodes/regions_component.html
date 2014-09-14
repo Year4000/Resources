@@ -2,9 +2,9 @@
 title: Regions Component
 layout: default
 weight: 104
-types.yaw.pitch: This region also can have a <code>yaw</code> and <code>pitch</code> set but they are optional as they are used for spawn and teleport regions.
 ---
 
+{% assign yaw_pitch = "<p>This region also can have a <code>yaw</code> and <code>pitch</code> set but they are optional as they are used for spawn and teleport regions.</p>" %}
 
 <h3 id="classes">{{ page.title }}</h3>
 <p>
@@ -17,48 +17,65 @@ Enable regions for your map.
 </p>
 
 <h3 id="classes">Region Types</h3>
+
+
+<div class="panel panel-default">
+<div class="panel-heading panel-title"><b>Global</b></div>
+<div class="panel-body">
 <p>
-<b>Global</b> region effect every thing, but also can include a starting <code>y</code> and a stopping <code>y</code>.
+<i>Global</i> region effect every thing, but also can include a starting <code>y</code> and a stopping <code>y</code>.
 The stop y must be higher than the start y.
 The <code>start_y</code> defaults to 0 and <code>stop_y</code> defaults to 256.
-
+</p>
 <pre class="prettyprint linenums lang-json">
 {"global": {"start_y": 10, "stop_y": 12}}
 </pre>
-</p>
+</div>
+</div>
 
+<div class="panel panel-default">
+<div class="panel-heading panel-title"><b>Void</b></div>
+<div class="panel-body">
 <p>
-<b>Void</b> region effect every thing where their is no blocks in the <code>y</code>.
+<i>Void</i> region effect every thing where their is no blocks in the <code>y</code>.
 Their are currently no configurable options to change.
 
 <pre class="prettyprint linenums lang-json">
 {"void": {}}
 </pre>
-</p>
+</div>
+</div>
 
+<div class="panel panel-default">
+<div class="panel-heading panel-title"><b>Point</b></div>
+<div class="panel-body">
 <p>
-<b>Point</b> region effect only one block at the specific point.
+<i>Point</i> region effect only one block at the specific point.
 
 <pre class="prettyprint linenums lang-json">
 {"point": {"x": 0, "y": 0, "z": 0}}
 </pre>
 
-{{ page.types.yaw.pitch }}
+{{ yaw_pitch }}
 
 <pre class="prettyprint linenums lang-json">
 {"point": {"x": 0, "y": 0, "z": 0, "yaw": 0, "pitch": 0}}
 </pre>
-</p>
+</div>
+</div>
 
+<div class="panel panel-default">
+<div class="panel-heading panel-title"><b>Cuboid</b></div>
+<div class="panel-body">
 <p>
-<b>Cuboid</b> region effects all the blocks defined by the two points.
+<i>Cuboid</i> region effects all the blocks defined by the two points.
 The min cords must be smaller than the max cords.
 
 <pre class="prettyprint linenums lang-json">
 {"cuboid": {"min": {"x": 0, "y": 0, "z": 0}, "max": {"x": 0, "y": 0, "z": 0}}}
 </pre>
 
-{{ page.types.yaw.pitch }}
+{{ yaw_pitch }}
 
 <pre class="prettyprint linenums lang-json">
 {
@@ -70,17 +87,21 @@ The min cords must be smaller than the max cords.
     }
 }
 </pre>
-</p>
+</div>
+</div>
 
+<div class="panel panel-default">
+<div class="panel-heading panel-title"><b>Sphere</b></div>
+<div class="panel-body">
 <p>
-<b>Sphere</b> region effects sphere around the the center point as defined by the radius.
+<i>Sphere</i> region effects sphere around the the center point as defined by the radius.
 The radius must be bigger then 0.
 
 <pre class="prettyprint linenums lang-json">
 {"sphere": {"center": {"x": 0, "y": 0, "z": 0}, "radius": 5}}
 </pre>
 
-{{ page.types.yaw.pitch }}
+{{ yaw_pitch }}
 
 <pre class="prettyprint linenums lang-json">
 {
@@ -92,15 +113,19 @@ The radius must be bigger then 0.
     }
 }
 </pre>
-</p>
+</div>
+</div>
 
+<div class="panel panel-default">
+<div class="panel-heading panel-title"><b>Cylinder</b></div>
+<div class="panel-body">
 <p>
-<b>Cylinder</b> region effects the cylinder around the center point as defined by the radius and height.
+<i>Cylinder</i> region effects the cylinder around the center point as defined by the radius and height.
 <pre class="prettyprint linenums lang-json">
 {"cylinder": {"center": {"x": 0, "y": 0, "z": 0}, "radius": 5, "height": 1}}
 </pre>
 
-{{ page.types.yaw.pitch }}
+{{ yaw_pitch }}
 
 <pre class="prettyprint linenums lang-json">
 {
@@ -113,4 +138,5 @@ The radius must be bigger then 0.
     }
 }
 </pre>
-</p>
+</div>
+</div>
