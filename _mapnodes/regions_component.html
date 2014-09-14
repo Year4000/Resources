@@ -2,6 +2,7 @@
 title: Regions Component
 layout: default
 weight: 104
+types.yaw.pitch: This region also can have a <code>yaw</code> and <code>pitch</code> set but they are optional as they are used for spawn and teleport regions.
 ---
 
 
@@ -11,6 +12,105 @@ Enable regions for your map.
 <pre class="prettyprint linenums lang-json">
 "regions": {
 
+}
+</pre>
+</p>
+
+<h3 id="classes">Region Types</h3>
+<p>
+<b>Global</b> region effect every thing, but also can include a starting <code>y</code> and a stopping <code>y</code>.
+The stop y must be higher than the start y.
+The <code>start_y</code> defaults to 0 and <code>stop_y</code> defaults to 256.
+
+<pre class="prettyprint linenums lang-json">
+{"global": {"start_y": 10, "stop_y": 12}}
+</pre>
+</p>
+
+<p>
+<b>Void</b> region effect every thing where their is no blocks in the <code>y</code>.
+Their are currently no configurable options to change.
+
+<pre class="prettyprint linenums lang-json">
+{"void": {}}
+</pre>
+</p>
+
+<p>
+<b>Point</b> region effect only one block at the specific point.
+
+<pre class="prettyprint linenums lang-json">
+{"point": {"x": 0, "y": 0, "z": 0}}
+</pre>
+
+{{ page.types.yaw.pitch }}
+
+<pre class="prettyprint linenums lang-json">
+{"point": {"x": 0, "y": 0, "z": 0, "yaw": 0, "pitch": 0}}
+</pre>
+</p>
+
+<p>
+<b>Cuboid</b> region effects all the blocks defined by the two points.
+The min cords must be smaller than the max cords.
+
+<pre class="prettyprint linenums lang-json">
+{"cuboid": {"min": {"x": 0, "y": 0, "z": 0}, "max": {"x": 0, "y": 0, "z": 0}}}
+</pre>
+
+{{ page.types.yaw.pitch }}
+
+<pre class="prettyprint linenums lang-json">
+{
+    "cuboid": {
+        "min": {"x": 0, "y": 0, "z": 0},
+        "max": {"x": 0, "y": 0, "z": 0},
+        "yaw": 0,
+        "pitch": 0
+    }
+}
+</pre>
+</p>
+
+<p>
+<b>Sphere</b> region effects sphere around the the center point as defined by the radius.
+The radius must be bigger then 0.
+
+<pre class="prettyprint linenums lang-json">
+{"sphere": {"center": {"x": 0, "y": 0, "z": 0}, "radius": 5}}
+</pre>
+
+{{ page.types.yaw.pitch }}
+
+<pre class="prettyprint linenums lang-json">
+{
+    "sphere": {
+        "center": {"x": 0, "y": 0, "z": 0},
+        "radius": 5,
+        "yaw": 0,
+        "pitch": 0
+    }
+}
+</pre>
+</p>
+
+<p>
+<b>Cylinder</b> region effects the cylinder around the center point as defined by the radius and height.
+<pre class="prettyprint linenums lang-json">
+{"cylinder": {"center": {"x": 0, "y": 0, "z": 0}, "radius": 5, "height": 1}}
+</pre>
+
+{{ page.types.yaw.pitch }}
+
+<pre class="prettyprint linenums lang-json">
+{
+    "cylinder": {
+        "center": {"x": 0, "y": 0, "z": 0},
+        "radius": 5,
+        "height": 1,
+        "yaw": 0,
+        "pitch": 0
+    }
 }
 </pre>
 </p>
