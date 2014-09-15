@@ -6,16 +6,18 @@ tabs:
   regions:
     name: Regions
     data: regions
-    location: regions/types.html
   region-types:
     name: Region Type
     data: types
+  region-events:
+    name: Region Events
+    data: events
 ---
 
 {% assign yaw_pitch = "<p>This region also can have a <code>yaw</code> and <code>pitch</code> set but they are optional as they are used for spawn and teleport regions.</p>" %}
 
 <div class="tab-pane active" id="regions">
-    <h3 id="classes">{{ page.title }}</h3>
+    <h3>{{ page.title }}</h3>
     <p>
     Enable regions for your map.
     </p>
@@ -23,13 +25,25 @@ tabs:
 {% highlight json linenos %}
 {
     "regions": {
+        "region_name": {
+            "apply": ["team_name"],
+            "events": {
+                "event_id": {}
+            }
+            "zones": ["zone_objects"]
+        }
     }
 }
 {% endhighlight %}
 </div>
 
 <div class="tab-pane" id="types">
-    <h3 id="classes">Region Types</h3>
+    <h3>Region Types</h3>
+    <p>
+        Their are diffrent type of regions that you can use.
+        You can have global types, that manage the whole world.
+        You can use many geometry shapes that will only effect in that shape.
+    </p>
 
     <div class="panel panel-default">
         <div class="panel-heading panel-title"><b>Global</b></div>
@@ -177,4 +191,282 @@ tabs:
 {% endhighlight %}
         </div>
     </div>
+</div>
+
+<div class="tab-pane" id="events">
+    <h3>Region Events</h3>
+    <p>
+        With in each region their are events that you can change,
+        that will get called when that event happens in that region.
+    </p>
+
+    <h4>Global Events Actions</h4>
+    <p>
+        All events have the following actions.
+
+        <ul>
+            <li>Weight</li>
+            <li>Allow <code><i>This may not be the same to all event actions.</i></code></li>
+            <li>Drop Item</li>
+            <li>Play Sound at World's Location</li>
+        </ul>
+
+        The following event actions will only work if in context with a player.
+
+        <ul>
+            <li>Message</li>
+            <li>Give / Add Kit</li>
+            <li>Play Sound to Player</li>
+            <li>Teleport</li>
+        </ul>
+    </p>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Enter</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Enter</i>'s event will only let the specific team to enter the region.
+        </p>
+
+{% highlight json linenos %}
+{
+    "enter": {
+        "weight": 1
+        "allow": false,
+        "message": "You may not enter this zone.",
+        "play_sound": "blaze_hit"
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Exit</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Exit</i>'s event will only let the specific team to exit the region.
+        </p>
+
+{% highlight json linenos %}
+{
+    "exit": {
+        "weight": 1
+        "allow": false,
+        "message": "You may not exit this zone.",
+        "play_sound": "blaze_hit"
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Build</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Build</i>'s event will only let the specific blocks to be placed.
+            <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
+        </p>
+
+{% highlight json linenos %}
+{
+    "build": {
+        "blocks": ["list_of_blocks_that_can_be_placed"],
+        "weight": 1,
+        "allow": true
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Destory</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Destory</i>'s event will only let the specific blocks to be destoyed.
+            <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
+        </p>
+
+{% highlight json linenos %}
+{
+    "destory": {
+        "blocks": ["list_of_blocks_that_can_be_broken"],
+        "weight": 1,
+        "allow": true
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>TNT</b></div>
+        <div class="panel-body">
+        <p>
+            <i>TNT</i>'s event will change the behavior of tnt in the effected region.
+        </p>
+
+{% highlight json linenos %}
+{
+    "tnt": {
+        "instant": true,
+        "block_damage": true,
+        "drops": 100,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Chest</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Chest</i>'s event will fill the chests in the region with items.
+        </p>
+
+{% highlight json linenos %}
+{
+    "build": {
+        "items": ["list_of_item_objects_see_bellow"],
+        "fill": true,
+        "scatter": false,
+        "amount": 5,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+
+        <p>
+            The item object, very close to kit items.
+        </p>
+
+{% highlight json linenos %}
+{
+    "name": "item_name",
+    "amount": 6,
+    "damage": 124,
+    "nbt": {}
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Bow</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Bow</i>'s event will change the way bows act in the region.
+        </p>
+
+{% highlight json linenos %}
+{
+    "bow": {
+        "entity": "entity_type_name",
+        "velocity": 5,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Block Drop</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Block Drop</i>'s will change the effects of block drops.
+            <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
+        </p>
+
+{% highlight json linenos %}
+{
+    "block_drops": {
+        "items": ["list_of_item_names"],
+        "allow": true,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Player Drop</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Bow</i>'s event will only let the specific blocks to be placed.
+            <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
+        </p>
+
+{% highlight json linenos %}
+{
+    "player_drops": {
+        "items": ["list_of_item_names"],
+        "allow": true,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Creature Spawn</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Creature Spawn</i>'s event will only let the specific blocks to be placed.
+            <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
+        </p>
+
+{% highlight json linenos %}
+{
+    "creature_spawn": {
+        "creatures": ["list_of_creatures_that_are_effected"],
+        "allow": true,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>PVP</b></div>
+        <div class="panel-body">
+        <p>
+            <i>PVP</i>'s event will change what happens durring pvp.
+        </p>
+
+{% highlight json linenos %}
+{
+    "pvp": {
+        "allow": false,
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Kill Player</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Kill Player</i>'s event will apply more actions when you kill a player.
+        </p>
+
+{% highlight json linenos %}
+{
+    "kill_player": {
+        "weight": 1
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
 </div>
