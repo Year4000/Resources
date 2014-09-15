@@ -8,23 +8,19 @@ weight: 106
 <p>
 Classes are what custom kits you can have, after you pick a team.
 You can make some classes for VIP's by naming the permission
-<code>theta</code>, <code>mu</code>, <code>pi</code>, or <code>sigma</code>. 
-<pre class="prettyprint linenums lang-json">
-"classes": {
-    // the class id
-    "alchemist": {
-        // the class display name
-        "name": "Alchemist",
+<code>theta</code>, <code>mu</code>, <code>pi</code>, or <code>sigma</code>.
+</p>
 
-        // the item icon
-        "icon": "potion",
-
-        // the description of what this kits has
-        "description": "You are a mast of potions and this will help you with your battle.",
-
-        // the kit id that this class will get
-        "kit": "alchemist"
+{% highlight json linenos %}
+{
+    "classes": {
+        "alchemist": {
+            "name": "Alchemist",
+            "icon": "potion",
+            "description": "You are a mast of potions and this will help you with your battle.",
+            "kit": "alchemist"
+        }
     }
 }
-</pre>
-</p>
+{% endhighlight %}
+

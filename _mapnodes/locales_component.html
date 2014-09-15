@@ -6,16 +6,20 @@ weight: 105
 
 <h3 id="classes">{{ page.title }}</h3>
 <p>
-Enable locales for your map
-<pre class="prettyprint linenums lang-json">
-"locales": {
-    "en_US": {
-        "message.key": "This is the value for `message.key`",
-    },
+Enable locales for your map.
+</p>
 
-    "pt_BR": {
-        "message.key": "This is the value for `message.key`",
+{% highlight json linenos %}
+{
+    "locales": {
+        "en_US": {
+            "message.key": "This is the value for `message.key`",
+        },
+
+        "pt_BR": {
+            "message.key": "This is the value for `message.key`",
+        }
     }
 }
-</pre>
-</p>
+{% endhighlight %}
+

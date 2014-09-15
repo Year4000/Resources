@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+
+{% include sidebar.html %}
+
+<section>
+
+<ul class="nav nav-tabs">
+
+{% for tab in page.tabs %}
+
+{% if tab == page.tabs.first %}
+
+<li class="active"><a href="#{{ tab.last.data }}" data-toggle="tab">{{ tab.last.name }}</a></li>
+
+{% else %}
+
+<li ><a href="#{{ tab.last.data }}" data-toggle="tab">{{ tab.last.name }}</a></li>
+
+{% endif%}
+
+
+{% endfor%}
+
+</ul>
+
+<article class="tab-content">
+
+{{ content }}
+
+</article>
+</section>
+
+{% include footer.html %}
+
+</body>
+</html>

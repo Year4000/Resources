@@ -1,83 +1,101 @@
 ---
 title: Regions Component
-layout: default
+layout: tabs
 weight: 104
+tabs:
+  regions:
+    name: Regions
+    data: regions
+    location: regions/types.html
+  region-types:
+    name: Region Type
+    data: types
 ---
 
 {% assign yaw_pitch = "<p>This region also can have a <code>yaw</code> and <code>pitch</code> set but they are optional as they are used for spawn and teleport regions.</p>" %}
 
-<h3 id="classes">{{ page.title }}</h3>
-<p>
-Enable regions for your map.
-<pre class="prettyprint linenums lang-json">
-"regions": {
+<div class="tab-pane active" id="regions">
+    <h3 id="classes">{{ page.title }}</h3>
+    <p>
+    Enable regions for your map.
+    </p>
 
+{% highlight json linenos %}
+{
+    "regions": {
+    }
 }
-</pre>
-</p>
+{% endhighlight %}
+</div>
 
-<h3 id="classes">Region Types</h3>
+<div class="tab-pane" id="types">
+    <h3 id="classes">Region Types</h3>
 
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Global</b></div>
+        <div class="panel-body">
+            <p>
+                <i>Global</i> region effect every thing,
+                but also can include a starting <code>y</code> and a stopping <code>y</code>.
+                The stop y must be higher than the start y.
+                The <code>start_y</code> defaults to 0 and <code>stop_y</code> defaults to 256.
+            </p>
 
-<div class="panel panel-default">
-<div class="panel-heading panel-title"><b>Global</b></div>
-<div class="panel-body">
-<p>
-<i>Global</i> region effect every thing, but also can include a starting <code>y</code> and a stopping <code>y</code>.
-The stop y must be higher than the start y.
-The <code>start_y</code> defaults to 0 and <code>stop_y</code> defaults to 256.
-</p>
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {"global": {"start_y": 10, "stop_y": 12}}
-</pre>
-</div>
-</div>
+{% endhighlight %}
 
-<div class="panel panel-default">
-<div class="panel-heading panel-title"><b>Void</b></div>
-<div class="panel-body">
-<p>
-<i>Void</i> region effect every thing where their is no blocks in the <code>y</code>.
-Their are currently no configurable options to change.
+        </div>
+    </div>
 
-<pre class="prettyprint linenums lang-json">
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Void</b></div>
+        <div class="panel-body">
+            <p>
+                <i>Void</i> region effect every thing where their is no blocks in the <code>y</code>.
+                Their are currently no configurable options to change.
+            </p>
+
+{% highlight json linenos %}
 {"void": {}}
-</pre>
-</div>
-</div>
+{% endhighlight %}
+        </div>
+    </div>
 
-<div class="panel panel-default">
-<div class="panel-heading panel-title"><b>Point</b></div>
-<div class="panel-body">
-<p>
-<i>Point</i> region effect only one block at the specific point.
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Point</b></div>
+        <div class="panel-body">
+            <p>
+                <i>Point</i> region effect only one block at the specific point.
+            </p>
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {"point": {"x": 0, "y": 0, "z": 0}}
-</pre>
+{% endhighlight %}
 
-{{ yaw_pitch }}
+        {{ yaw_pitch }}
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {"point": {"x": 0, "y": 0, "z": 0, "yaw": 0, "pitch": 0}}
-</pre>
-</div>
-</div>
+{% endhighlight %}
+        </div>
+    </div>
 
-<div class="panel panel-default">
-<div class="panel-heading panel-title"><b>Cuboid</b></div>
-<div class="panel-body">
-<p>
-<i>Cuboid</i> region effects all the blocks defined by the two points.
-The min cords must be smaller than the max cords.
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Cuboid</b></div>
+        <div class="panel-body">
+            <p>
+                <i>Cuboid</i> region effects all the blocks defined by the two points.
+                The min cords must be smaller than the max cords.
+            </p>
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {"cuboid": {"min": {"x": 0, "y": 0, "z": 0}, "max": {"x": 0, "y": 0, "z": 0}}}
-</pre>
+{% endhighlight %}
 
-{{ yaw_pitch }}
+        {{ yaw_pitch }}
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {
     "cuboid": {
         "min": {"x": 0, "y": 0, "z": 0},
@@ -86,24 +104,25 @@ The min cords must be smaller than the max cords.
         "pitch": 0
     }
 }
-</pre>
-</div>
-</div>
+{% endhighlight %}
+        </div>
+    </div>
 
-<div class="panel panel-default">
-<div class="panel-heading panel-title"><b>Sphere</b></div>
-<div class="panel-body">
-<p>
-<i>Sphere</i> region effects sphere around the the center point as defined by the radius.
-The radius must be bigger then 0.
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Sphere</b></div>
+        <div class="panel-body">
+            <p>
+            <i>Sphere</i> region effects sphere around the the center point as defined by the radius.
+            The radius must be bigger then 0.
+            </p>
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {"sphere": {"center": {"x": 0, "y": 0, "z": 0}, "radius": 5}}
-</pre>
+{% endhighlight %}
 
-{{ yaw_pitch }}
+        {{ yaw_pitch }}
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {
     "sphere": {
         "center": {"x": 0, "y": 0, "z": 0},
@@ -112,22 +131,24 @@ The radius must be bigger then 0.
         "pitch": 0
     }
 }
-</pre>
-</div>
-</div>
+{% endhighlight %}
+        </div>
+    </div>
 
-<div class="panel panel-default">
-<div class="panel-heading panel-title"><b>Cylinder</b></div>
-<div class="panel-body">
-<p>
-<i>Cylinder</i> region effects the cylinder around the center point as defined by the radius and height.
-<pre class="prettyprint linenums lang-json">
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Cylinder</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Cylinder</i> region effects the cylinder around the center point as defined by the radius and height.
+        </p>
+
+{% highlight json linenos %}
 {"cylinder": {"center": {"x": 0, "y": 0, "z": 0}, "radius": 5, "height": 1}}
-</pre>
+{% endhighlight %}
 
-{{ yaw_pitch }}
+        {{ yaw_pitch }}
 
-<pre class="prettyprint linenums lang-json">
+{% highlight json linenos %}
 {
     "cylinder": {
         "center": {"x": 0, "y": 0, "z": 0},
@@ -137,6 +158,7 @@ The radius must be bigger then 0.
         "pitch": 0
     }
 }
-</pre>
-</div>
+{% endhighlight %}
+        </div>
+    </div>
 </div>

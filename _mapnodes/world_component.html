@@ -9,88 +9,21 @@ weight: 101
 This component will control various aspects of the game, and game play
 of each map. They do not rely on a specific game mode and can be used
 for any maps.
-<pre class="prettyprint linenums lang-json">
-"game": {
-    // the spawn point for the world, you may use `point` and/or `min/max`
-    "spawn": [
-        {"point": {"x": 0, "y": 0, "z": 0}},
-        {"min":{"x":-0,"y":0,"z":-0},"max":{"x":0,"y":0,"z":0}}
-    ],
+</p>
 
-    // can you destory blocks, you are still allowed to place blocks
-    "destructable": true,
-
-    // the world difficulty level, if not set default to world settings
-    "difficulty": 3,
-
-    // the time the world's time should be locked to
-    "timeLock": -1,
-
-    // the max height that you can place blocks
-    "worldHeight": -1,
-
-    // the time limit of the game
-    "timeLimit": 60,
-
-    // force the weather on
-    "forceWeather": false,
-
-    // the resource pack url
-    "resourcepack": "",
-
-    // damages causes that can be disabled
-    // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
-" target="_blank">DamageCause</a>
-    "noDamage": [""],
-
-    // mobs that are allow to spawn
-    // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/entity/EntityType.html" target="_blank">EntityTypes</a>
-    "enabledMobs": [""],
-
-    // items that can drop from player's inventory, for all items use ["all"]
-    // a list of allowed names see <a href="http://jd.bukkit.org/dev/apidocs/org/bukkit/Material.html" target="_blank">Items</a>
-    "enabledPlayerDrops": [""],
-
-    // should the game end when their is one team left
-    "elimination": false,
-
-    // the number of lives before the player must pick another team
-    "lives": -1,
-
-    // change how tnt will work
-    "tnts": {
-        // when tnt is placed should it be ignited
-        "instant": false,
-
-        // should the tnt cause block damage
-        "blockDamage": true,
-
-        // the block yield ammount in percent (0 - 100)
-        "drops": 100
-    },
-
-    // change how bows will work
-    "bows": {
-        // the entity that is fired from the bow
-        "entity": "arrow",
-
-        // the force multiplier
-        "velocity": 0
-    },
-
-    // spawn random items in chests
-    "chests": {
-        // the items that the chest could have same as kit items
-        "items": [
-            {"item": "stone_sword"}
+{% highlight json linenos %}
+{
+    "game": {
+        "spawn": [
+            {"point": {"x": 0, "y": 0, "z": 0}},
+            {"min": {"x": -0, "y": 0, "z": -0}, "max": {"x": 0,"y": 0,"z": 0}}
         ],
-
-        // the amount of stacks should be in the chests, pick at random from above
-        "amount": 10,
-
-        // should the items be in the chest at random
-        "scatter": true
+        "difficulty": 3,
+        "timeLock": -1,
+        "worldHeight": -1,
+        "timeLimit": 60,
+        "forceWeather": false,
+        "resourcepack": ""
     }
 }
-</pre>
-</p>
+{% endhighlight %}

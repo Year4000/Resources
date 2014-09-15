@@ -7,6 +7,7 @@ description: >
   the Year4000 Network.
 
 url: "https://resources.year4000.net"
+#url: "http://localhost:4000"
 
 twitter_username: Y4KNetwork
 
