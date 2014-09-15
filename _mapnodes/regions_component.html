@@ -22,6 +22,33 @@ tabs:
     Enable regions for your map.
     </p>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>apply</td>
+                <td><span class="label label-info">List</span></td>
+                <td>A list of team names the following region will effect.</td>
+            </tr>
+            <tr>
+                <td>events</td>
+                <td><span class="label label-info">Map</span></td>
+                <td>Enabled event objects <code>Region Events</code>, that change how actions are effected.</td>
+            </tr>
+            <tr>
+                <td>zones</td>
+                <td><span class="label label-info">List</span></td>
+                <td>A list of <code>Region Type</code> objects this region will see.</td>
+            </tr>
+        </tbody>
+    </table>
+
 {% highlight json linenos %}
 {
     "regions": {
@@ -55,8 +82,38 @@ tabs:
                 The <code>start_y</code> defaults to 0 and <code>stop_y</code> defaults to 256.
             </p>
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>start_y</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>y</code> cord to start the region</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>stop_y</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>y</code> cord to stop the region</td>
+                        <td>256</td>
+                    </tr>
+                </tbody>
+            </table>
+
 {% highlight json linenos %}
-{"global": {"start_y": 10, "stop_y": 12}}
+{
+    "global": {
+        "start_y": 10,
+        "stop_y": 12
+    }
+}
 {% endhighlight %}
 
         </div>
@@ -71,7 +128,49 @@ tabs:
             </p>
 
 {% highlight json linenos %}
-{"void": {}}
+{
+    "void": {}
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Chunk</b></div>
+        <div class="panel-body">
+            <p>
+                <i>Chunk</i> region effect every thing in that chunk.
+            </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>x</code> chunk location.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>z</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>z</code> chunk location.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "chunk": {"x": 0, "z": 0}
+}
 {% endhighlight %}
         </div>
     </div>
@@ -83,14 +182,61 @@ tabs:
                 <i>Point</i> region effect only one block at the specific point.
             </p>
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>x</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>x</code> corident in the world.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>y</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>y</code> corident in the world.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>z</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The <code>z</code> corident in the world.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>yaw</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The player's teleport yaw.</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>pitch</td>
+                        <td><span class="label label-info">integer</span></td>
+                        <td>The player's teleport pitch.</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
 {% highlight json linenos %}
-{"point": {"x": 0, "y": 0, "z": 0}}
+{
+    "point": {"x": 0, "y": 0, "z": 0}
+}
 {% endhighlight %}
 
         {{ yaw_pitch }}
 
 {% highlight json linenos %}
-{"point": {"x": 0, "y": 0, "z": 0, "yaw": 0, "pitch": 0}}
+{
+    "point": {"x": 0, "y": 0, "z": 0, "yaw": 0, "pitch": 0}
+}
 {% endhighlight %}
         </div>
     </div>
@@ -102,6 +248,43 @@ tabs:
                 <i>Cuboid</i> region effects all the blocks defined by the two points.
                 The min cords must be smaller than the max cords.
             </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>min</td>
+                        <td><span class="label label-info">Point</span></td>
+                        <td>The <code>min</code> point in the cuboid.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>max</td>
+                        <td><span class="label label-info">Point</span></td>
+                        <td>The <code>max</code> point in the cuboid.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>yaw</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The player's teleport yaw.</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>pitch</td>
+                        <td><span class="label label-info">integer</span></td>
+                        <td>The player's teleport pitch.</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
 
 {% highlight json linenos %}
 {
@@ -135,6 +318,44 @@ tabs:
             The radius must be bigger then 0.
             </p>
 
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>center</td>
+                        <td><span class="label label-info">Point</span></td>
+                        <td>The <code>center</code> point in the sphere.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>radius</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The size around the center point</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>yaw</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The player's teleport yaw.</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>pitch</td>
+                        <td><span class="label label-info">integer</span></td>
+                        <td>The player's teleport pitch.</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
 {% highlight json linenos %}
 {
     "sphere": {
@@ -165,6 +386,49 @@ tabs:
         <p>
             <i>Cylinder</i> region effects the cylinder around the center point as defined by the radius and height.
         </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>center</td>
+                        <td><span class="label label-info">Point</span></td>
+                        <td>The <code>center</code> point in the sphere.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>radius</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The size around the center point</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The height from the center point</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>yaw</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The player's teleport yaw.</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>pitch</td>
+                        <td><span class="label label-info">integer</span></td>
+                        <td>The player's teleport pitch.</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
 
 {% highlight json linenos %}
 {
@@ -200,9 +464,12 @@ tabs:
         that will get called when that event happens in that region.
     </p>
 
-    <h4>Global Events Actions</h4>
-    <p>
-        All events have the following actions.
+    <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Global Event Actions</b></div>
+        <div class="panel-body">
+        <p>
+            All events have the following actions.
+        </p>
 
         <ul>
             <li>Weight</li>
@@ -211,7 +478,9 @@ tabs:
             <li>Play Sound at World's Location</li>
         </ul>
 
-        The following event actions will only work if in context with a player.
+        <p>
+            The following event actions will only work if in context with a player.
+        </p>
 
         <ul>
             <li>Message</li>
@@ -219,7 +488,69 @@ tabs:
             <li>Play Sound to Player</li>
             <li>Teleport</li>
         </ul>
-    </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>weight</td>
+                    <td><span class="label label-info">Integer</span></td>
+                    <td>Higher the weight the more priority it will take.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>Higher the weight the more priority it will take.</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td>drop_item</td>
+                    <td><span class="label label-info">Item List</span></td>
+                    <td>This will drop the list of items at that location.</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>play_sound</td>
+                    <td><span class="label label-info">Sound</span></td>
+                    <td>Will play a sound at for the player or at the location.</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>message</td>
+                    <td><span class="label label-info">String</span></td>
+                    <td>Send the player a message.</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>teleport</td>
+                    <td><span class="label label-info">Point</span></td>
+                    <td>Teleport the player to the given location.</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>give_kit</td>
+                    <td><span class="label label-info">Kit</span></td>
+                    <td>Will set the player's kit.</td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td>add_kit</td>
+                    <td><span class="label label-info">Kit</span></td>
+                    <td>Will try to add the player's kit.</td>
+                    <td>None</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 
     <div class="panel panel-default">
         <div class="panel-heading panel-title"><b>Enter</b></div>
@@ -231,7 +562,7 @@ tabs:
 {% highlight json linenos %}
 {
     "enter": {
-        "weight": 1
+        "weight": 1,
         "allow": false,
         "message": "You may not enter this zone.",
         "play_sound": "blaze_hit"
@@ -251,7 +582,7 @@ tabs:
 {% highlight json linenos %}
 {
     "exit": {
-        "weight": 1
+        "weight": 1,
         "allow": false,
         "message": "You may not exit this zone.",
         "play_sound": "blaze_hit"
@@ -268,6 +599,31 @@ tabs:
             <i>Build</i>'s event will only let the specific blocks to be placed.
             <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
         </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>blocks</td>
+                    <td><span class="label label-info">Item Names</span></td>
+                    <td>The blocks this event will take in account.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>When allow is true it will act as a whitelist when false a blacklist.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
 
 {% highlight json linenos %}
 {
@@ -289,6 +645,31 @@ tabs:
             <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
         </p>
 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>blocks</td>
+                    <td><span class="label label-info">Item Names</span></td>
+                    <td>The blocks this event will take in account.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>When allow is true it will act as a whitelist when false a blacklist.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
+
 {% highlight json linenos %}
 {
     "destory": {
@@ -307,6 +688,37 @@ tabs:
         <p>
             <i>TNT</i>'s event will change the behavior of tnt in the effected region.
         </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>instant</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>Will the tnt be activated when placed.</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td>block_damage</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>Will the tnt break blocks.</td>
+                    <td>True</td>
+                </tr>
+                <tr>
+                    <td>drops</td>
+                    <td><span class="label label-info">Float</span></td>
+                    <td>The effected area between <code>0-100</code> percent.</td>
+                    <td>100</td>
+                </tr>
+            </tbody>
+        </table>
 
 {% highlight json linenos %}
 {
@@ -328,28 +740,52 @@ tabs:
             <i>Chest</i>'s event will fill the chests in the region with items.
         </p>
 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>items</td>
+                    <td><span class="label label-info">Items</span></td>
+                    <td>The type if entity that will be shot from the bow.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>fill</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>Will the chest be 100% filled with the items in the list.</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td>scatter</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>Are the items scattered in the chest.</td>
+                    <td>False</td>
+                </tr>
+                <tr>
+                    <td>amount</td>
+                    <td><span class="label label-info">Integer</span></td>
+                    <td>Only applys when fill is false, the amount of items to add.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
+
 {% highlight json linenos %}
 {
-    "build": {
+    "chest": {
         "items": ["list_of_item_objects_see_bellow"],
         "fill": true,
         "scatter": false,
         "amount": 5,
         "weight": 1
     }
-}
-{% endhighlight %}
-
-        <p>
-            The item object, very close to kit items.
-        </p>
-
-{% highlight json linenos %}
-{
-    "name": "item_name",
-    "amount": 6,
-    "damage": 124,
-    "nbt": {}
 }
 {% endhighlight %}
         </div>
@@ -361,6 +797,31 @@ tabs:
         <p>
             <i>Bow</i>'s event will change the way bows act in the region.
         </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>entity</td>
+                    <td><span class="label label-info">Entity</span></td>
+                    <td>The type if entity that will be shot from the bow.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>velocity</td>
+                    <td><span class="label label-info">Integer</span></td>
+                    <td>The velocity multiplier.</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+        </table>
 
 {% highlight json linenos %}
 {
@@ -382,6 +843,31 @@ tabs:
             <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
         </p>
 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>items</td>
+                    <td><span class="label label-info">Items Names</span></td>
+                    <td>The items this event will take in account.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>When allow is true it will act as a whitelist when false a blacklist.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
+
 {% highlight json linenos %}
 {
     "block_drops": {
@@ -398,9 +884,34 @@ tabs:
         <div class="panel-heading panel-title"><b>Player Drop</b></div>
         <div class="panel-body">
         <p>
-            <i>Bow</i>'s event will only let the specific blocks to be placed.
+            <i>Player Drop</i>'s event will change what items can players drop.
             <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
         </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>items</td>
+                    <td><span class="label label-info">Items Names</span></td>
+                    <td>The items this event will take in account.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>When allow is true it will act as a whitelist when false a blacklist.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
 
 {% highlight json linenos %}
 {
@@ -421,6 +932,31 @@ tabs:
             <i>Creature Spawn</i>'s event will only let the specific blocks to be placed.
             <br />The <code>allow</code> option changes the effect on the list to become a blacklist or whitelist.
         </p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>creatures</td>
+                    <td><span class="label label-info">Creature Names</span></td>
+                    <td>The creatures this event will take in account.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>When allow is true it will act as a whitelist when false a blacklist.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
 
 {% highlight json linenos %}
 {

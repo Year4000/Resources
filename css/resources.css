@@ -56,6 +56,13 @@ h6 {
     padding: 5px;
 }
 
+td .label {
+    padding: 6px;
+    max-width: 75px;
+    display: block;
+    overflow: hidden;
+}
+
 .bar {
     display: block;
     height: 4px;

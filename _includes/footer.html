@@ -2,6 +2,7 @@
     Year4000 &copy; 2014 version
     <code>
     {% if site.github.build_revision %}
+        
         {% assign hash = site.github.build_revision | truncate: 10 | replace:'...', '' %}
         <a href="{{ site.github.repository_url }}/commit/{{ site.github.build_revision }}" target="_blank">{{ hash }}</a>
     {% else %}
