@@ -311,6 +311,83 @@ tabs:
     </div>
 
     <div class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Cube</b></div>
+        <div class="panel-body">
+        <p>
+            <i>Cube</i> region effects the cube around the center point as defined by the radius and height.
+            This is very similar to cylinder but its a cube.
+        </p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>center</td>
+                        <td><span class="label label-info">Point</span></td>
+                        <td>The <code>center</code> point in the cube.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>radius</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The size around the center point</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The height from the center point</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>yaw</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The player's teleport yaw.</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>pitch</td>
+                        <td><span class="label label-info">integer</span></td>
+                        <td>The player's teleport pitch.</td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "cube": {
+        "center": {"x": 0, "y": 0, "z": 0},
+        "radius": 5,
+        "height": 1
+    }
+}
+{% endhighlight %}
+
+        {{ yaw_pitch }}
+
+{% highlight json linenos %}
+{
+    "cube": {
+        "center": {"x": 0, "y": 0, "z": 0},
+        "radius": 5,
+        "height": 1,
+        "yaw": 0,
+        "pitch": 0
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div class="panel panel-default">
         <div class="panel-heading panel-title"><b>Sphere</b></div>
         <div class="panel-body">
             <p>
