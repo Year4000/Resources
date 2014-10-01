@@ -1,13 +1,38 @@
 ---
 title: Locales Component
-layout: default
+layout: tabs
 weight: 105
+tabs:
+  locales:
+    name: Locales
+    data: locales
+  locales-builtin:
+    name: Builtin Locales
+    data: builtin
 ---
 
-<h3 id="classes">{{ page.title }}</h3>
+<h3>{{ page.title }}</h3>
 <p>
-Enable locales for your map.
+Enable locales for that are specific for your map.
+Though it is recommend that you use one of the built in values.
 </p>
+
+<div class="tab-pane active" id="locales">
+    <h3>{{ page.title }}</h3>
+    <p>
+    The locales are not required if you use the built in locales.
+    Though if you do not use the builtin locales, it is easy to add locales for your map.
+    </p>
+
+    <h3>Where you can place locales</h3>
+	<ul>
+        <li>In the map's <code>description</code> field.</li>
+        <li>Item's <code>name</code> field.</li>
+        <li>Item's <code>lore</code> field.</li>
+        <li>Books's <code>title</code> field.</li>
+        <li>Books's <code>page</code> fields.</li>
+        <li>Region's <code>message</code> field.</li>
+    </ul>
 
 {% highlight json linenos %}
 {
@@ -22,4 +47,26 @@ Enable locales for your map.
     }
 }
 {% endhighlight %}
+</div>
+
+<div class="tab-pane active" id="builtin">
+    <h3>Builtin Locales</h3>
+    <p>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Key</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>apply</td>
+                <td>A list of team names the following region will effect.</td>
+        </tbody>
+    </table>
+</div>
+
 
