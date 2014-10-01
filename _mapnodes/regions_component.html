@@ -425,7 +425,7 @@ tabs:
                     </tr>
                     <tr>
                         <td>pitch</td>
-                        <td><span class="label label-info">integer</span></td>
+                        <td><span class="label label-info">Integer</span></td>
                         <td>The player's teleport pitch.</td>
                         <td>0</td>
                     </tr>
@@ -549,8 +549,7 @@ tabs:
         </p>
 
         <ul>
-            <li>Weight</li>
-            <li>Allow <code><i>This may not be the same to all event actions.</i></code></li>
+            <li>Allow</li>
             <li>Drop Item</li>
             <li>Play Sound at World's Location</li>
         </ul>
@@ -576,12 +575,6 @@ tabs:
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>weight</td>
-                    <td><span class="label label-info">Integer</span></td>
-                    <td>Higher the weight the more priority it will take.</td>
-                    <td><span class="label label-warning">Required</span></td>
-                </tr>
                 <tr>
                     <td>allow</td>
                     <td><span class="label label-info">Boolean</span></td>
@@ -639,7 +632,6 @@ tabs:
 {% highlight json linenos %}
 {
     "enter": {
-        "weight": 1,
         "allow": false,
         "message": "You may not enter this zone.",
         "play_sound": "blaze_hit"
@@ -659,7 +651,6 @@ tabs:
 {% highlight json linenos %}
 {
     "exit": {
-        "weight": 1,
         "allow": false,
         "message": "You may not exit this zone.",
         "play_sound": "blaze_hit"
@@ -706,7 +697,6 @@ tabs:
 {
     "build": {
         "blocks": ["list_of_blocks_that_can_be_placed"],
-        "weight": 1,
         "allow": true
     }
 }
@@ -751,7 +741,6 @@ tabs:
 {
     "destory": {
         "blocks": ["list_of_blocks_that_can_be_broken"],
-        "weight": 1,
         "allow": true
     }
 }
@@ -802,8 +791,7 @@ tabs:
     "tnt": {
         "instant": true,
         "block_damage": true,
-        "drops": 100,
-        "weight": 1
+        "drops": 100
     }
 }
 {% endhighlight %}
@@ -860,8 +848,7 @@ tabs:
         "items": ["list_of_item_objects_see_bellow"],
         "fill": true,
         "scatter": false,
-        "amount": 5,
-        "weight": 1
+        "amount": 5
     }
 }
 {% endhighlight %}
@@ -904,8 +891,7 @@ tabs:
 {
     "bow": {
         "entity": "entity_type_name",
-        "velocity": 5,
-        "weight": 1
+        "velocity": 5
     }
 }
 {% endhighlight %}
@@ -949,8 +935,7 @@ tabs:
 {
     "block_drops": {
         "items": ["list_of_item_names"],
-        "allow": true,
-        "weight": 1
+        "allow": true
     }
 }
 {% endhighlight %}
@@ -994,8 +979,7 @@ tabs:
 {
     "player_drops": {
         "items": ["list_of_item_names"],
-        "allow": true,
-        "weight": 1
+        "allow": true
     }
 }
 {% endhighlight %}
@@ -1039,8 +1023,7 @@ tabs:
 {
     "creature_spawn": {
         "creatures": ["list_of_creatures_that_are_effected"],
-        "allow": true,
-        "weight": 1
+        "allow": true
     }
 }
 {% endhighlight %}
@@ -1057,8 +1040,7 @@ tabs:
 {% highlight json linenos %}
 {
     "pvp": {
-        "allow": false,
-        "weight": 1
+        "allow": false
     }
 }
 {% endhighlight %}
@@ -1075,7 +1057,6 @@ tabs:
 {% highlight json linenos %}
 {
     "kill_player": {
-        "weight": 1
     }
 }
 {% endhighlight %}
