@@ -6,9 +6,47 @@ weight: 100
 
 <h3 id="map">{{ page.title }}</h3>
 <p>
-This component is required, this tells MapNodes information about
-the map. It includes a <code>name</code>, <code>version</code>, <code>description</code>, <code>authors.</code> 
+This component is required, this tells MapNodes information about the map.
+It includes a <code>name</code>, <code>version</code>, <code>description</code>, <code>authors</code>.
 </p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The map name, it should be less than <code>22</code> chars</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>version</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The map's version, it should in the standard format of MAJOR.MINOR (<code>1.0</code>)</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>description</td>
+            <td><span class="label label-info">String</span></td>
+            <td>What are the goals of the map.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>authors</td>
+            <td><span class="label label-info">List</span></td>
+            <td>A list of the authors that helped make the map.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>  
+    </tbody>
+</table>
+
 
 {% highlight json linenos %}
 {
