@@ -3,6 +3,9 @@ title: Json Resources
 layout: tabs
 weight: 900
 tabs:
+  inventory:
+    name: Inventory
+    data: inventory
   colors:
     name: Chat Colors
     data: colors
@@ -17,7 +20,30 @@ tabs:
     data: effects
 ---
 
-<div class="tab-pane active" id="colors">
+<div class="tab-pane active" id="inventory">
+    <h3>Inventory</h3>
+    <p>The slot number of the player's inventory to place itemss.</p>
+
+    <table class="table table-bordered">
+        <tr class="info">
+            {% for i in (9..17) %}<td class="text-center h4">{{ i }}</td>{% endfor %}
+        </tr>
+        <tr class="info">
+            {% for i in (18..26) %}<td class="text-center h4">{{ i }}</td>{% endfor %}
+        </tr>
+        <tr class="info">
+            {% for i in (27..35) %}<td class="text-center h4">{{ i }}</td>{% endfor %}
+        </tr>
+        <tr class="success">
+            {% for i in (0..8) %}<td class="text-center h4">{{ i }}</td>{% endfor %}
+        </tr>
+    </table>
+
+    <br /><b class="label label-info">Blue:</b> The numbers in blue is the slot in the players inventory.
+    <br /><b class="label label-success">Green:</b> The numbers in green is player's hotbar.
+</div>
+
+<div class="tab-pane" id="colors">
     <h3>Chat Colors</h3>
     <p>Colors are used for many things, they tell what color the team is. They tell what color the wool, stained clay, glass, carpet, and glass pane are.</p>
 
