@@ -5,56 +5,421 @@ weight: 103
 ---
 
 <h3 id="kits">{{ page.title }}</h3>
-<p>
-Game kits that control what items or player aspects should be
-apply to each kit. This is a very advance system that is very
-customisable.
-</p>
+<p>Game kits that control what items or player aspects should be apply to each kit. This is a very advance system that is very customisable. You may not name any kit default that is the internal kit name that reset's the player and is given is the player does not have a kit assigned to them.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>gamemode</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The gamemode the player will be in survival, creative, adventure, spectator.</td>
+            <td>Survival</td>
+        </tr>
+        <tr>
+            <td>fly</td>
+            <td><span class="label label-info">Boolean</span></td>
+            <td>Will players be able to fly like creative mode.</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>health</td>
+            <td><span class="label label-info">Integer</span></td>
+            <td>The player's health level must be bigger than 1.</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>food</td>
+            <td><span class="label label-info">Integer</span></td>
+            <td>The player's food level, must be 0-20</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>permissions</td>
+            <td><span class="label label-info">List</span></td>
+            <td>The list of permission nodes the player will recive.</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>armor</td>
+            <td><span class="label label-info">Armor</span></td>
+            <td>The item to be used for the player's helmet.</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>items</td>
+            <td><span class="label label-info">List</span></td>
+            <td>The items the player's will be granted.</td>
+            <td>None</td>
+        </tr>
+        <tr>
+            <td>effects</td>
+            <td><span class="label label-info">List</span></td>
+            <td>The potion effects the player's will be granted.</td>
+            <td>None</td>
+        </tr>
+    </tbody>
+</table>
 
 {% highlight json linenos %}
 {
     "kits": {
         "spawn": {
-            "armor": {
-                "helmet": {"item":"leather_helmet"},
-                "chestplate": {"item":"chainmail_chestplate"},
-                "leggings": {"item":"chainmail_leggings"},
-                "boots": {"item":"chainmail_boots", "nbt": {
-                    "display": {"color": "red"}
-                }}
-            },
-
             "gamemode": "survival",
             "fly": false,
             "health": 20,
             "food": 20,
             "permissions": [""],
 
-            "items": [
-                {"item": "stone_sword"},
-                {"slot": 0, "amount": 32, "damage": 2, "item": "wood"},
-                {"slot": 0, "amount": 32, "damage": 2, "item": "wood", "nbt": {
-                    "display": {"name": "&eThis is &6wood&e!", "lore": ["Line one", "Line Two"]},
-                    "enchantments": [
-                        {"name": "knockback", "level": 1}
-                    ]
-                }},
+            "armor": {
+                "helmet": { },
+                "chestplate": { },
+                "leggings": { },
+                "boots": { }
+            },
 
-                {"item": "written_book", "nbt": {
-                    "title": "Book Title",
-                    "author": "ewized",
-                    "pages": [
-                        "&ewe support &6ChatColors",
-                        "page two \n\n\n skip a few line"
-                    ]
-                }}
-            ],
+            "items": [ ],
 
-            "effects": [
-                {"name": "speed", "duration": -1},
-                {"name": "regeneration", "duration": -1, "ambient": true, "showParticles": false}
-            ]
+            "effects": [ ]
         }
     }
 }
 {% endhighlight %}
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title"><b>Armor</b></div>
+    <div class="panel-body">
+    <p><i>Armor</i> defines the helmet, chestplate, leggings, and boots. Their values are items.</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>helmet</td>
+                <td><span class="label label-info">Item</span></td>
+                <td>The item to be used for the player's helmet.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>chestplate</td>
+                <td><span class="label label-info">Item</span></td>
+                <td>The item to be used for the player's chestplate.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>leggings</td>
+                <td><span class="label label-info">Item</span></td>
+                <td>The item to be used for the player's leggings.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>boots</td>
+                <td><span class="label label-info">Item</span></td>
+                <td>The item to be used for the player's boots.</td>
+                <td>None</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% highlight json linenos %}
+{
+    "armor": {
+        "helmet": { },
+        "chestplate": { },
+        "leggings": { },
+        "boots": { }
+    }
+}
+{% endhighlight %}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title"><b>Item</b></div>
+    <div class="panel-body">
+    <p><i>Items</i> what makes up an item the slot, type, amount, damage value, and nbt data.</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>slot</td>
+                <td><span class="label label-info">Integer</span></td>
+                <td>The slot position on the player's inventory.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>item</td>
+                <td><span class="label label-info">String</span></td>
+                <td>The name of the item type.</td>
+                <td><span class="label label-warning">Required</span></td>
+            </tr>
+            <tr>
+                <td>damage</td>
+                <td><span class="label label-info">Integer</span></td>
+                <td>The damage value of the item.</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>amount</td>
+                <td><span class="label label-info">Integer</span></td>
+                <td>The amount of items that will in a slot.</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>nbt</td>
+                <td><span class="label label-info">NBT</span></td>
+                <td>The items nbt data.</td>
+                <td>None</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% highlight json linenos %}
+{"slot": 0, "item": "wood", "damage": 4, "amount": 64}
+{% endhighlight %}
+
+{% highlight json linenos %}
+{"item": "written_book", "nbt": {}}
+{% endhighlight %}
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title"><b>NBT</b></div>
+    <div class="panel-body">
+    <p><i>NBT</i> is extra data to the item to make it diffrent from other items with the same damage value. You can apply any nbt data to any item though you may not get expected results.</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>display</td>
+                <td><span class="label label-info">Display</span></td>
+                <td>Controls the display of the item.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>enchantments</td>
+                <td><span class="label label-info">List</span></td>
+                <td>Add enchants to the items.</td>
+                <td>None</td>
+            </tr>
+            <!-- Book NBT -->
+            <tr>
+                <td>title</td>
+                <td><span class="label label-info">String</span></td>
+                <td>The title of the book.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>author</td>
+                <td><span class="label label-info">String</span></td>
+                <td>The author of the book.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>pages</td>
+                <td><span class="label label-info">List</span></td>
+                <td>Each element of the list is a new page.</td>
+                <td>None</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% highlight json linenos %}
+{
+    "nbt": {
+        "display": { },
+        "enchantments": [ ]
+    }
+}
+{% endhighlight %}
+
+{% highlight json linenos %}
+{
+    "item": "written_book",
+    "nbt": {
+        "title": "Book Title",
+        "author": "ewized",
+        "pages": [
+            "&ewe support &6ChatColors",
+            "page two \n\n\n skip a few line"
+        ]
+    }
+}
+{% endhighlight %}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title"><b>Display</b></div>
+    <div class="panel-body">
+    <p><i>Display</i> control the display of the item. This will change the name, lore, or color. The color value will only work on leather armor. Currently they only accept a chat color but is planed to suport hex color codes. If the leather armor is not colored it will default to the teams color.</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name</td>
+                <td><span class="label label-info">String</span></td>
+                <td>The name of the item.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>lore</td>
+                <td><span class="label label-info">List</span></td>
+                <td>A list of lore line the item will have.</td>
+                <td>None</td>
+            </tr>
+            <tr>
+                <td>color</td>
+                <td><span class="label label-info">ChatColor</span></td>
+                <td>The color value of the leather armor</td>
+                <td>None</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% highlight json linenos %}
+{
+    "name": "&6Gold Apple",
+    "lore": ["Line one", "Line two"],
+    "color": "white"
+}
+{% endhighlight %}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title"><b>Enchantment</b></div>
+    <div class="panel-body">
+    <p><i>Enchantment</i> is magic that is applied to the item to make it better.</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name</td>
+                <td><span class="label label-info">String</span></td>
+                <td>The name of the enchanment.</td>
+                <td><span class="label label-warning">Required</span></td>
+            </tr>
+            <tr>
+                <td>level</td>
+                <td><span class="label label-info">Integer</span></td>
+                <td>The level of the enchantment</td>
+                <td><span class="label label-warning">Required</span></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+{% highlight json linenos %}
+{"name": "arrow_damage", "level": 1}
+{% endhighlight %}
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-title"><b>Potion Effects</b></div>
+    <div class="panel-body">
+    <p><i>Potion Effect</i> are effects that are applied to the player.</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Default</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>name</td>
+                <td><span class="label label-info">String</span></td>
+                <td>The name of the Potion Effect.</td>
+                <td><span class="label label-warning">Required</span></td>
+            </tr>
+            <tr>
+                <td>duration</td>
+                <td><span class="label label-info">Duration</span></td>
+                <td>The time lenght of the effect, use -1 to make it forever.</td>
+                <td><span class="label label-warning">Required</span></td>
+            </tr>
+            <tr>
+                <td>level</td>
+                <td><span class="label label-info">Integer</span></td>
+                <td>The potion effect level that will be applied.</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>ambient</td>
+                <td><span class="label label-info">Boolean</span></td>
+                <td>Are the particle translutant like they apear near beacons.</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>show_particles</td>
+                <td><span class="label label-info">Boolean</span></td>
+                <td>Show particle around the player.</td>
+                <td>true</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% highlight json linenos %}
+{
+    "name": "night_vision",
+    "duration": "-1",
+    "level": "1",
+    "ambient": false,
+    "show_particles": true
+}
+{% endhighlight %}
+    </div>
+</div>
