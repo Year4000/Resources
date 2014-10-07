@@ -1,15 +1,25 @@
 ---
 title: Json Templates
-layout: default
+layout: tabs
 weight: 1000
+tabs:
+  normal:
+    name: Generic
+    data: normal
+  deathmatch:
+    name: Deathmatch
+    data: deathmatch
+  capture:
+    name: Capture
+    data: capture
+  skywars:
+    name: Skywars
+    data: skywars
 ---
 
-<h3 id="template">{{ page.title }}</h3>
-<p>
-Bellow is the basic <code>map.json</code> that you can make.
-With names extracted so you may use it as template for your
-map.
-</p>
+<div class="tab-pane active" id="normal">
+    <h3>Generic Template</h3>
+    <p>Bellow is the basic <code>map.json</code> that you can make. With names extracted so you may use it as template for your map.</p>
 
 {% highlight json linenos %}
 {
@@ -20,11 +30,10 @@ map.
         "authors": [""]
     },
 
-    "game": {
-        "spawn": {"point": {"x": 0, "y": 0, "z": 0}},
-        "timeLimit": 60,
-        "elimination": false,
-        "lives": 1
+    "world": {
+        "spawn": [{"point": {"xyz": "0, 0, 0"}}],
+        "time_lock": "noon",
+        "world_height": 100
     },
 
     "kits": {
@@ -34,7 +43,14 @@ map.
                 "chestplate": {"item":"leather_chestplate"},
                 "leggings": {"item":"leather_leggings"},
                 "boots": {"item":"leather_boots"}
-            }
+            },
+            "items": [
+                {"slot": 0, "item": "iron_sword"},
+                {"slot": 1, "item": "iron_pickaxe"},
+                {"slot": 2, "item": "iron_axe"},
+                {"slot": 3, "item": "wood", "amount": 64},
+                {"slot": 4, "item": "wood", "amount": 64}
+            ]
         }
     },
 
@@ -43,16 +59,351 @@ map.
             "name": "Red",
             "color": "red",
             "kit": "spawn",
-            "size": 1,
-            "spawns": [{"point": {"x": 0, "y": 0, "z": 0}}]
+            "size": 50,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
         },
         "blue": {
             "name": "Blue",
             "color": "blue",
             "kit": "spawn",
-            "size": 1,
-            "spawns": [{"point": {"x": 0, "y": 0,"z": 0}}]
+            "size": 50,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
         }
     }
 }
 {% endhighlight %}
+</div>
+
+<div class="tab-pane" id="deathmatch">
+    <h3>Deahtmatch Template</h3>
+    <p>Bellow is the basic <code>map.json</code> that you can make for deathmatch. It does not have any settings for advance features like, custom kill points or point boxes.</p>
+
+{% highlight json linenos %}
+{
+    "map": {
+        "name": "",
+        "version":"",
+        "description": "",
+        "authors": [""]
+    },
+
+    "world": {
+        "spawn": [{"point": {"xyz": "0, 0, 0"}}],
+        "time_lock": "noon",
+        "world_height": 100
+    },
+
+    "games": {
+        "deathmatch": {
+            "time_limit": "10m",
+            "max_score": 100
+        }
+    },
+
+    "kits": {
+        "spawn": {
+            "armor": {
+                "helmet": {"item":"leather_helmet"},
+                "chestplate": {"item":"leather_chestplate"},
+                "leggings": {"item":"leather_leggings"},
+                "boots": {"item":"leather_boots"}
+            },
+            "items": [
+                {"slot": 0, "item": "iron_sword"},
+                {"slot": 1, "item": "iron_pickaxe"},
+                {"slot": 2, "item": "iron_axe"},
+                {"slot": 3, "item": "wood", "amount": 64},
+                {"slot": 4, "item": "wood", "amount": 64}
+            ]
+        }
+    },
+
+    "teams": {
+        "red": {
+            "name": "Red",
+            "color": "red",
+            "kit": "spawn",
+            "size": 50,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
+        },
+        "blue": {
+            "name": "Blue",
+            "color": "blue",
+            "kit": "spawn",
+            "size": 50,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
+        }
+    }
+}
+{% endhighlight %}
+</div>
+
+<div class="tab-pane" id="capture">
+    <h3>Capture Template</h3>
+    <p>Bellow is the basic <code>map.json</code> that you can make for capture. You will need to modify the region to how you map is set up.</p>
+
+{% highlight json linenos %}
+{
+    "map": {
+        "name": "",
+        "version":"",
+        "description": "",
+        "authors": [""]
+    },
+
+    "world": {
+        "spawn": [{"point": {"xyz": "0, 0, 0"}}],
+        "time_lock": "noon",
+        "world_height": 100
+    },
+
+    "games": {
+        "capture": {
+            "block_captures": [
+                {"owner": "orange", "challenger": "blue", "region": "yellow_wool", "wool": "yellow"},
+                {"owner": "orange", "challenger": "blue", "region": "orange_wool", "wool": "gold"},
+                {"owner": "blue", "challenger": "orange", "region": "blue_wool", "wool": "blue"},
+                {"owner": "blue", "challenger": "orange", "region": "aqua_wool", "wool": "aqua"}
+            ]
+        }
+    },
+
+    "regions": {
+        "aqua_wool_room": {
+            "events": {
+                "chest": {
+                    "items": [
+                        {"item": "wool", "damage": 3}
+                    ],
+                    "keep_filled": true,
+                    "fill": true
+                },
+                "enter": {
+                    "apply": ["blue"],
+                    "message": "region.enter.room",
+                    "allow": false
+                },
+                "build": {
+                    "allow": false
+                },
+                "destroy": {
+                    "allow": false
+                }
+            },
+            "zones": [{"cylinder": {"center": {"xyz": "0, 0, 0"}, "radius": 5, "height": 15}}]
+        },
+        "blue_wool_room": {
+            "events": {
+                "chest": {
+                    "items": [
+                        {"item": "wool", "damage": 11}
+                    ],
+                    "keep_filled": true,
+                    "fill": true
+                },
+                "enter": {
+                    "apply": ["blue"],
+                    "message": "region.enter.room",
+                    "allow": false
+                },
+                "build": {
+                    "allow": false
+                },
+                "destroy": {
+                    "allow": false
+                }
+            },
+            "zones": [{"cylinder": {"center": {"xyz": "0, 0, 0"}, "radius": 5, "height": 15}}]
+        },
+        "orange_wool_room": {
+            "events": {
+                "chest": {
+                    "items": [
+                        {"item": "wool", "damage": 1}
+                    ],
+                    "keep_filled": true,
+                    "fill": true
+                },
+                "enter": {
+                    "apply": ["orange"],
+                    "message": "region.enter.room",
+                    "allow": false
+                },
+                "build": {
+                    "allow": false
+                },
+                "destroy": {
+                    "allow": false
+                }
+            },
+            "zones": [{"cylinder": {"center": {"xyz": "0, 0, 0"}, "radius": 5, "height": 15}}]
+        },
+        "yellow_wool_room": {
+            "events": {
+                "chest": {
+                    "items": [
+                        {"item": "wool", "damage": 4}
+                    ],
+                    "keep_filled": true,
+                    "fill": true
+                },
+                "enter": {
+                    "apply": ["orange"],
+                    "message": "region.enter.room",
+                    "allow": false
+                },
+                "build": {
+                    "allow": false
+                },
+                "destroy": {
+                    "allow": false
+                }
+            },
+            "zones": [{"cylinder": {"center": {"xyz": "0, 0, 0"}, "radius": 5, "height": 15}}]
+        },
+        "blue_wool": {"zones": [{"point": {"xyz": "0, 0, 0"}}]},
+        "aqua_wool": {"zones": [{"point": {"xyz": "0, 0, 0"}}]},
+        "yellow_wool": {"zones": [{"point": {"xyz": "0, 0, 0"}}]},
+        "orange_wool": {"zones": [{"point": {"xyz": "0, 0, 0"}}]}
+    },
+
+    "kits": {
+        "spawn": {
+            "armor": {
+                "helmet": {"item":"leather_helmet"},
+                "chestplate": {"item":"leather_chestplate"},
+                "leggings": {"item":"leather_leggings"},
+                "boots": {"item":"leather_boots"}
+            },
+            "items": [
+                {"slot": 0, "item": "iron_sword"},
+                {"slot": 1, "item": "iron_pickaxe"},
+                {"slot": 2, "item": "iron_axe"},
+                {"slot": 3, "item": "wood", "amount": 64},
+                {"slot": 4, "item": "wood", "amount": 64}
+            ]
+        }
+    },
+
+    "teams": {
+        "red": {
+            "name": "Red",
+            "color": "red",
+            "kit": "spawn",
+            "size": 50,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
+        },
+        "blue": {
+            "name": "Blue",
+            "color": "blue",
+            "kit": "spawn",
+            "size": 50,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
+        }
+    }
+}
+{% endhighlight %}
+</div>
+
+<div class="tab-pane" id="skywars">
+    <h3>Skywars Template</h3>
+    <p>Bellow is the basic <code>map.json</code> that you can make for skywars. Note that their is one team and each spawn is a diffrent location for each player the max team size must match the spawn list size.</p>
+
+{% highlight json linenos %}
+{
+    "map": {
+        "name": "",
+        "version":"",
+        "description": "",
+        "authors": [""]
+    },
+
+    "world": {
+        "spawn": [{"point": {"xyz": "0, 0, 0"}}],
+        "time_lock": "noon",
+        "world_height": 100
+    },
+
+    "games": {
+        "skywars": {
+            "players_team": "players"
+        }
+    },
+
+    "regions": {
+        "global": {
+            "events": {
+                "chest": {
+                    "items": [
+                        {"item": "stone_sword"},
+                        {"item": "iron_sword"},
+                        {"item": "wood_sword"},
+                        {"item": "wood", "damage": 2, "amount": 10},
+                        {"item": "wood", "damage": 2, "amount": 10},
+                        {"item": "wood", "damage": 2, "amount": 5},
+                        {"item": "wood", "damage": 2, "amount": 5},
+                        {"item": "wood", "damage": 2, "amount": 2},
+                        {"item": "wood", "damage": 2, "amount": 2},
+                        {"item": "carrot_item", "amount": 3},
+                        {"item": "potato_item", "amount": 3},
+                        {"item": "arrow", "amount": 3},
+                        {"item": "arrow"},
+                        {"item": "bow"},
+                        {"item": "lava_bucket"},
+                        {"item": "water_bucket"},
+                        {"item": "egg", "amount": 4},
+                        {"item": "egg", "amount": 3},
+                        {"item": "egg", "amount": 2},
+                        {"item": "egg"},
+                        {"item": "snow_ball", "amount": 4},
+                        {"item": "snow_ball", "amount": 3},
+                        {"item": "snow_ball", "amount": 2},
+                        {"item": "snow_ball"},
+                        {"item": "ender_pearl"},
+                        {"item": "tnt", "amount": 2},
+                        {"item": "tnt"},
+                        {"item": "string"},
+                        {"item": "string"},
+                        {"item": "web"},
+                        {"item": "web"},
+                        {"item": "fishing_rod"},
+                        {"item": "fishing_rod"},
+                        {"item": "iron_spade"},
+                        {"item": "iron_pickaxe"},
+                        {"item": "iron_axe"},
+                        {"item": "iron_spade"},
+                        {"item": "iron_pickaxe"},
+                        {"item": "iron_axe"}
+                    ],
+                    "amount": 9
+                }
+            },
+            "zones": [{"global": {}}]
+        }
+    },
+
+    "teams": {
+        "players": {
+            "name": "Players",
+            "color": "green",
+            "size": 12,
+            "spawns": [
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}},
+                {"point": {"xyz": "0, 0, 0"}}
+            ]
+        }
+    }
+}
+{% endhighlight %}
+</div>
