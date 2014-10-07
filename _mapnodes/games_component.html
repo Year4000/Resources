@@ -1,13 +1,20 @@
 ---
 title: Games Component
-layout: default
+layout: tabs
 weight: 102
+tabs:
+  component:
+    name: Games Component
+    data: component
+  modes:
+    name: Game Modes
+    data: modes
 ---
 
-<h3 id="classes">{{ page.title }}</h3>
-<p>
-Enable game modes
-</p>
+
+<div class="tab-pane active" id="component">
+    <h3>{{ page.title }}</h3>
+    <p>Games this controls what game modes are enabled and what the settings are for them. To enable a game mode you just add another object the this map. Each key is the game mode's name and the value object are the settings for that game mode. You can have more than one game mode but this may cause unexpected results.</p>
 
 {% highlight json linenos %}
 {
@@ -16,3 +23,283 @@ Enable game modes
     }
 }
 {% endhighlight %}
+</div>
+
+<div class="tab-pane" id="modes">
+    <h3>Game Modes</h3>
+    <p>Bellow are the various game modes that you can apply to any map.</p>
+
+    <ul class="nav nav-pills">
+        <li><a href="#capture">Capture</a></li>
+        <li><a href="#deathmatch">Deathmatch</a></li>
+        <li><a href="#skywars">Skywars</a></li>
+    </ul>
+
+    <br />
+
+    <div id="capture" class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Capture</b></div>
+        <div class="panel-body">
+        <p>Capture is a gamemode where you have to grab a block from one side of the map and bring it back to your base. Their are predefined capture variables that you can set and it will pre fill out the Name, Block, and Data.</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>block_captures</td>
+                        <td><span class="label label-info">List</span></td>
+                        <td>The block capture objects that describe the capture block.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "capture": {
+        "block_captures": [ ]
+    }
+}
+{% endhighlight %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>owner</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The team id that owns the current block.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>challenger</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The team id that needs to capture the block.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>region</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The region id that the block point will be at.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The name that will show up on the scoreboard.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>block</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The item type of the block that must be captured.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>data</td>
+            <td><span class="label label-info">Integer</span></td>
+            <td>The data of this custom block.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>wool</td>
+            <td><span class="label label-info">ChatColor</span></td>
+            <td>The chat color of the wool block.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>clay</td>
+            <td><span class="label label-info">ChatColor</span></td>
+            <td>The chat color of the wool block.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<span class="label label-info">NOTE:</span> If the wool variable is set you can not set name, block, and data as they will be overwriten.<br />
+<span class="label label-info">NOTE:</span> If the clay variable is set you can not set name, block, and data as they will be overwriten.<br />
+
+<b>Custom</b>
+{% highlight json linenos %}
+{
+    "owner": "",
+    "challenger": "",
+    "region": "",
+    "name": "",
+    "block": "",
+    "data": 0
+}
+{% endhighlight %}
+
+<b>Wool</b>
+{% highlight json linenos %}
+{
+    "owner": "",
+    "challenger": "",
+    "region": "",
+    "wool": ""
+}
+{% endhighlight %}
+
+<b>Clay</b>
+{% highlight json linenos %}
+{
+    "owner": "",
+    "challenger": "",
+    "region": "",
+    "clay": ""
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div id="deathmatch" class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Deathmatch</b></div>
+        <div class="panel-body">
+        <p>Deathmatch is a gamemode where you are given points for killing players on the other teams. To win you must run time out or reach the max score. With the addition that you can add point boxes to help aid the teams score.</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>time_limit</td>
+                        <td><span class="label label-info">Duration</span></td>
+                        <td>Play untill the time runs out can be used with max_score.</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td>max_score</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The max score the team needs to reach to end the game.</td>
+                        <td>None</td>
+                    </tr>
+                    <tr>
+                        <td>kill_point</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The points given to the challenger's team.</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>point_boxes</td>
+                        <td><span class="label label-info">List</span></td>
+                        <td>A list of point box objects.</td>
+                        <td>None</td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "deathmatch": {
+        "time_limit": "10m",
+        "max_score": "100",
+        "kill_point": "2",
+        "point_boxes": [ ]
+    }
+}
+{% endhighlight %}
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>owner</td>
+                        <td><span class="label label-info">String</span></td>
+                        <td>The team id that owns the point box.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>challenger</td>
+                        <td><span class="label label-info">String</span></td>
+                        <td>The team id that needs to enter the point box.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>region</td>
+                        <td><span class="label label-info">String</span></td>
+                        <td>The region id that the point box will be at.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>point</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The points given to the challenger's team.</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "owner": "",
+    "challenger": "",
+    "region": "",
+    "point": 5
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+    <div id="skywars" class="panel panel-default">
+        <div class="panel-heading panel-title"><b>Skywars</b></div>
+        <div class="panel-body">
+        <p>Skywars is a gamemode where you fight to the death, with islands in the sky. Though due note that the player's teams' spawns, needs to match the team's max size and have one point for each island.</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>players_team</td>
+                        <td><span class="label label-info">Duration</span></td>
+                        <td>The team id that will act as the list of players.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "skywars": {
+        "players_team": ""
+    }
+}
+{% endhighlight %}
+        </div>
+    </div>
+
+</div>
