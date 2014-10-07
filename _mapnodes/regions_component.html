@@ -32,11 +32,6 @@ tabs:
         </thead>
         <tbody>
             <tr>
-                <td>apply</td>
-                <td><span class="label label-info">List</span></td>
-                <td>A list of team names the following region will effect.</td>
-            </tr>
-            <tr>
                 <td>events</td>
                 <td><span class="label label-info">Map</span></td>
                 <td>Enabled event objects <code>Region Events</code>, that change how actions are effected.</td>
@@ -53,7 +48,6 @@ tabs:
 {
     "regions": {
         "region_name": {
-            "apply": ["team_name"],
             "events": {
                 "event_id": {}
             },
@@ -153,15 +147,9 @@ tabs:
                 </thead>
                 <tbody>
                     <tr>
-                        <td>x</td>
-                        <td><span class="label label-info">Integer</span></td>
-                        <td>The <code>x</code> chunk location.</td>
-                        <td><span class="label label-warning">Required</span></td>
-                    </tr>
-                    <tr>
-                        <td>z</td>
-                        <td><span class="label label-info">Integer</span></td>
-                        <td>The <code>z</code> chunk location.</td>
+                        <td>xz</td>
+                        <td><span class="label label-info">Cordient</span></td>
+                        <td>The <code>x</code> and <code>z</code> chunk location.</td>
                         <td><span class="label label-warning">Required</span></td>
                     </tr>
                 </tbody>
@@ -169,7 +157,7 @@ tabs:
 
 {% highlight json linenos %}
 {
-    "chunk": {"x": 0, "z": 0}
+    "chunk": {"xz": "0, 0"}
 }
 {% endhighlight %}
         </div>
@@ -193,21 +181,9 @@ tabs:
                 </thead>
                 <tbody>
                     <tr>
-                        <td>x</td>
+                        <td>xyz</td>
                         <td><span class="label label-info">Integer</span></td>
-                        <td>The <code>x</code> corident in the world.</td>
-                        <td><span class="label label-warning">Required</span></td>
-                    </tr>
-                    <tr>
-                        <td>y</td>
-                        <td><span class="label label-info">Integer</span></td>
-                        <td>The <code>y</code> corident in the world.</td>
-                        <td><span class="label label-warning">Required</span></td>
-                    </tr>
-                    <tr>
-                        <td>z</td>
-                        <td><span class="label label-info">Integer</span></td>
-                        <td>The <code>z</code> corident in the world.</td>
+                        <td>The <code>x</code>, <code>y</code>, and <code>z</code> corident in the world.</td>
                         <td><span class="label label-warning">Required</span></td>
                     </tr>
                     <tr>
@@ -227,7 +203,7 @@ tabs:
 
 {% highlight json linenos %}
 {
-    "point": {"x": 0, "y": 0, "z": 0}
+    "point": {"xyz": "0, 0, 0"}
 }
 {% endhighlight %}
 
@@ -235,7 +211,7 @@ tabs:
 
 {% highlight json linenos %}
 {
-    "point": {"x": 0, "y": 0, "z": 0, "yaw": 0, "pitch": 0}
+    "point": {"xyz": "0, 0, 0", "yaw": 0, "pitch": 0}
 }
 {% endhighlight %}
         </div>
@@ -289,8 +265,8 @@ tabs:
 {% highlight json linenos %}
 {
     "cuboid": {
-        "min": {"x": 0, "y": 0, "z": 0},
-        "max": {"x": 0, "y": 0, "z": 0}
+        "min": {"xyz": "0, 0, 0"},
+        "max": {"xyz": "0, 0, 0"}
     }
 }
 {% endhighlight %}
@@ -300,8 +276,8 @@ tabs:
 {% highlight json linenos %}
 {
     "cuboid": {
-        "min": {"x": 0, "y": 0, "z": 0},
-        "max": {"x": 0, "y": 0, "z": 0},
+        "min": {"xyz": "0, 0, 0"},
+        "max": {"xyz": "0, 0, 0"},
         "yaw": 0,
         "pitch": 0
     }
@@ -364,7 +340,7 @@ tabs:
 {% highlight json linenos %}
 {
     "cube": {
-        "center": {"x": 0, "y": 0, "z": 0},
+        "center": {"xyz": "0, 0, 0"},
         "radius": 5,
         "height": 1
     }
@@ -376,7 +352,7 @@ tabs:
 {% highlight json linenos %}
 {
     "cube": {
-        "center": {"x": 0, "y": 0, "z": 0},
+        "center": {"xyz": "0, 0, 0"},
         "radius": 5,
         "height": 1,
         "yaw": 0,
@@ -436,7 +412,7 @@ tabs:
 {% highlight json linenos %}
 {
     "sphere": {
-        "center": {"x": 0, "y": 0, "z": 0},
+        "center": {"xyz": "0, 0, 0"},
         "radius": 5
     }
 }
@@ -447,7 +423,7 @@ tabs:
 {% highlight json linenos %}
 {
     "sphere": {
-        "center": {"x": 0, "y": 0, "z": 0},
+        "center": {"xyz": "0, 0, 0"},
         "radius": 5,
         "yaw": 0,
         "pitch": 0
@@ -510,7 +486,7 @@ tabs:
 {% highlight json linenos %}
 {
     "cylinder": {
-        "center": {"x": 0, "y": 0, "z": 0},
+        "center": {"xyz": "0, 0, 0"},
         "radius": 5,
         "height": 1
     }
@@ -522,7 +498,7 @@ tabs:
 {% highlight json linenos %}
 {
     "cylinder": {
-        "center": {"x": 0, "y": 0, "z": 0},
+        "center": {"xyz": "0, 0, 0"},
         "radius": 5,
         "height": 1,
         "yaw": 0,
@@ -822,6 +798,12 @@ tabs:
                     <td><span class="label label-warning">Required</span></td>
                 </tr>
                 <tr>
+                    <td>keep_fill</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>Will the chest be 100% filled with the items in the list.</td>
+                    <td>False</td>
+                </tr>
+                <tr>
                     <td>fill</td>
                     <td><span class="label label-info">Boolean</span></td>
                     <td>Will the chest be 100% filled with the items in the list.</td>
@@ -837,7 +819,7 @@ tabs:
                     <td>amount</td>
                     <td><span class="label label-info">Integer</span></td>
                     <td>Only applys when fill is false, the amount of items to add.</td>
-                    <td><span class="label label-warning">Required</span></td>
+                    <td>0</td>
                 </tr>
             </tbody>
         </table>
@@ -846,6 +828,7 @@ tabs:
 {
     "chest": {
         "items": ["list_of_item_objects_see_bellow"],
+        "keep_filled", true,
         "fill": true,
         "scatter": false,
         "amount": 5
@@ -1031,15 +1014,40 @@ tabs:
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading panel-title"><b>PVP</b></div>
+        <div class="panel-heading panel-title"><b>Entity Damage</b></div>
         <div class="panel-body">
         <p>
-            <i>PVP</i>'s event will change what happens durring pvp.
+            <i>Entity Damage</i>'s event will change what happens durring a damage cause.
         </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>damage_causes</td>
+                    <td><span class="label label-info">Damage</span></td>
+                    <td>The damage cause will take in account.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+                <tr>
+                    <td>allow</td>
+                    <td><span class="label label-info">Boolean</span></td>
+                    <td>When allow is true it will act as a whitelist when false a blacklist.</td>
+                    <td><span class="label label-warning">Required</span></td>
+                </tr>
+            </tbody>
+        </table>
 
 {% highlight json linenos %}
 {
-    "pvp": {
+    "entity_damage": {
+        "damage_causes": ["list_of_damage_causes"]
         "allow": false
     }
 }
