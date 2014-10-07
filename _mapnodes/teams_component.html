@@ -5,7 +5,7 @@ weight: 105
 ---
 
 <h3 id="teams">{{ page.title }}</h3>
-<p>Teams are not only teams but groups. This controls how teams work.</p>
+<p>Teams are not only teams but groups. This controls how teams work. The teams component is a Map of teams, each team will have a key, this key is used to id the team for various gamemodes and internal use.</p>
 
 <table class="table">
     <thead>
@@ -20,7 +20,7 @@ weight: 105
         <tr>
             <td>name</td>
             <td><span class="label label-info">String</span></td>
-            <td>The map name, it should be less than <code>22</code> chars</td>
+            <td>The team's display name, it differs from the team's key id.</td>
             <td><span class="label label-warning">Required</span></td>
         </tr>
         <tr>
