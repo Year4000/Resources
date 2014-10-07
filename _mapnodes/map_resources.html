@@ -1,0 +1,464 @@
+---
+title: Map Resources
+layout: tabs
+weight: 2
+tabs:
+  colors:
+    name: Chat Colors
+    data: colors
+  enchantments:
+    name: Enchantments
+    data: enchantments
+  damage:
+    name: Damage Cause
+    data: damage
+  effects:
+    name: Potion Effects
+    data: effects
+---
+
+<div class="tab-pane active" id="colors">
+    <h3>Chat Colors</h3>
+    <p>Colors are used for many things, they tell what color the team is. They tell what color the wool, stained clay, glass, carpet, and glass pane are.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Hex Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&f</td>
+                <td>white</td>
+                <td><span class="label" style="background: #fff; color: #000">#fff</span></td>
+            </tr>
+            <tr>
+                <td>&e</td>
+                <td>yellow</td>
+                <td><span class="label" style="background: #ff5; color: #000">#ff5</span></td>
+            </tr>
+            <tr>
+                <td>&d</td>
+                <td>light_purple</td>
+                <td><span class="label" style="background: #f5f; color: #000">#f5f</span></td>
+            </tr>
+            <tr>
+                <td>&c</td>
+                <td>red</td>
+                <td><span class="label" style="background: #f55; color: #000">#f55</span></td>
+            </tr>
+            <tr>
+                <td>&b</td>
+                <td>aqua</td>
+                <td><span class="label" style="background: #5ff; color: #000">#5ff</span></td>
+            </tr>
+            <tr>
+                <td>&a</td>
+                <td>green</td>
+                <td><span class="label" style="background: #5f5; color: #000">#5f5</span></td>
+            </tr>
+            <tr>
+                <td>&9</td>
+                <td>blue</td>
+                <td><span class="label" style="background: #55f; color: #000">#55f</span></td>
+            </tr>
+            <tr>
+                <td>&8</td>
+                <td>dark_gray</td>
+                <td><span class="label" style="background: #555">#555</span></td>
+            </tr>
+            <tr>
+                <td>&7</td>
+                <td>gray</td>
+                <td><span class="label" style="background: #aaa">#aaa</span></td>
+            </tr>
+            <tr>
+                <td>&6</td>
+                <td>gold</td>
+                <td><span class="label" style="background: #fa0; color: #000">#fa0</span></td>
+            </tr>
+            <tr>
+                <td>&5</td>
+                <td>dark_purple</td>
+                <td><span class="label" style="background: #a0a">#a0a</span></td>
+            </tr>
+            <tr>
+                <td>&4</td>
+                <td>dark_red</td>
+                <td><span class="label" style="background: #a00">#a00</span></td>
+            </tr>
+            <tr>
+                <td>&2</td>
+                <td>dark_green</td>
+                <td><span class="label" style="background: #0a0">#0a0</span></td>
+            </tr>
+            <tr>
+                <td>&1</td>
+                <td>dark_blue</td>
+                <td><span class="label" style="background: #00a">#00a</span></td>
+            </tr>
+            <tr>
+                <td>&0</td>
+                <td>black</td>
+                <td><span class="label" style="background: #000">#000</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane" id="enchantments">
+    <h3>Enchantments</h3>
+    <p>This is the list of enchants that you can use on your items. The items will only accept the name and not the in game name. As the name is what is internaly know in the code. Due note that you can apply any enchant or level to any item.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>In Game Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Bows -->
+            <tr>
+                <td>arrow_damage</td>
+                <td>Power</td>
+                <td>Provides extra damage when shooting arrows from bows.</td>
+            </tr>
+            <tr>
+                <td>arrow_fire</td>
+                <td>Flame</td>
+                <td>Sets entities on fire when hit by arrows shot from a bow.</td>
+            </tr>
+            <tr>
+                <td>arrow_infinite</td>
+                <td>Infinity</td>
+                <td>Provides infinite arrows when shooting a bow.</td>
+            </tr>
+            <tr>
+                <td>arrow_knockback</td>
+                <td>Punch</td>
+                <td>Provides a knockback when an entity is hit by an arrow from a bow.</td>
+            </tr>
+            <!-- Tools / Wepons -->
+            <tr>
+                <td>damage_all</td>
+                <td>Sharpness</td>
+                <td>Increases damage against all targets.</td>
+            </tr>
+            <tr>
+                <td>damage_arthropods</td>
+                <td>Bane of Arthropods</td>
+                <td>Increases damage against arthropod targets.</td>
+            </tr>
+            <tr>
+                <td>damage_undead</td>
+                <td>Smite</td>
+                <td>Increases damage against undead targets.</td>
+            </tr>
+            <tr>
+                <td>dig_speed</td>
+                <td>Efficiency</td>
+                <td>Increases the rate at which you mine/dig.</td>
+            </tr>
+            <tr>
+                <td>durability</td>
+                <td>Unbreaking</td>
+                <td>Decreases the rate at which a tool looses durability.</td>
+            </tr>
+            <tr>
+                <td>fire_aspect</td>
+                <td>Fire Aspect</td>
+                <td>When attacking a target, has a chance to set them on fire.</td>
+            </tr>
+            <tr>
+                <td>knockback</td>
+                <td>Knockback</td>
+                <td>All damage to other targets will knock them back when hit.</td>
+            </tr>
+            <tr>
+                <td>loot_bonus_blocks</td>
+                <td>Fortune</td>
+                <td>Provides a chance of gaining extra loot when destroying blocks.</td>
+            </tr>
+            <tr>
+                <td>loot_bonus_mobs</td>
+                <td>Looting</td>
+                <td>Provides a chance of gaining extra loot when killing monsters.</td>
+            </tr>
+            <tr>
+                <td>silk_touch</td>
+                <td>Silk Touch</td>
+                <td>Drop the block that you mined and not what it offers.</td>
+            </tr>
+            <!-- Fishing -->
+            <tr>
+                <td>luck</td>
+                <td>Luck of the Sea</td>
+                <td>Decreases odds of catching worthless junk.</td>
+            </tr>
+            <tr>
+                <td>lure</td>
+                <td>Lure</td>
+                <td>Increases rate of fish biting your hook.</td>
+            </tr>
+            <!-- Armor -->
+            <tr>
+                <td>oxygen</td>
+                <td>Respiration</td>
+                <td>Decreases the rate of air loss whilst underwater.</td>
+            </tr>
+            <tr>
+                <td>protection_environmental</td>
+                <td>Protection</td>
+                <td>Provides protection against environmental damage.</td>
+            </tr>
+            <tr>
+                <td>protection_explosions</td>
+                <td>Blast Protection</td>
+                <td>Provides protection against explosive damage.</td>
+            </tr>
+            <tr>
+                <td>protection_fall</td>
+                <td>Feather Falling</td>
+                <td>Provides protection against fall damage.</td>
+            </tr>
+            <tr>
+                <td>protection_fire</td>
+                <td>Fire Protection</td>
+                <td>Provides protection against fire damage.</td>
+            </tr>
+            <tr>
+                <td>protection_projectile</td>
+                <td>Projectile Protection</td>
+                <td>Provides protection against projectile damage.</td>
+            </tr>
+            <tr>
+                <td>thorns</td>
+                <td>Thorns</td>
+                <td>Damages the attacker.</td>
+            </tr>
+            <tr>
+                <td>water_worker</td>
+                <td>Aqua Affinity</td>
+                <td>Increases the speed at which a player may mine underwater.</td>
+            </tr>
+            <tr>
+                <td>???</td>
+                <td>Depth Strider</td>
+                <td>Increases underwater movement speed.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane" id="damage">
+    <h3>Damage Cause</h3>
+    <p>This is the list of damage causes that happen to entities.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>block_explosion</td>
+                <td>Damage caused by being in the area when a block explodes.</td>
+            </tr>
+            <tr>
+                <td>contact</td>
+                <td>Damage caused when an entity contacts a block such as a Cactus.</td>
+            </tr>
+            <tr>
+                <td>custom</td>
+                <td>Custom damage, damage that happens with custom items.</td>
+            </tr>
+            <tr>
+                <td>drowning</td>
+                <td>Damage caused by running out of air while in water.</td>
+            </tr>
+            <tr>
+                <td>entity_attack</td>
+                <td>Damage caused when an entity attacks another entity.</td>
+            </tr>
+            <tr>
+                <td>entity_explosion</td>
+                <td>Damage caused by being in the area when an entity, such as a Creeper, explodes.</td>
+            </tr>
+            <tr>
+                <td>fall</td>
+                <td>Damage caused when an entity falls a distance greater than 3 blocks.</td>
+            </tr>
+            <tr>
+                <td>falling_block</td>
+                <td>Damage caused by being hit by a falling block which deals damage.</td>
+            </tr>
+            <tr>
+                <td>fire</td>
+                <td>Damage caused by direct exposure to fire.</td>
+            </tr>
+            <tr>
+                <td>fire_tick</td>
+                <td>Damage caused due to burns caused by fire.</td>
+            </tr>
+            <tr>
+                <td>lava</td>
+                <td>Damage caused by direct exposure to lava.</td>
+            </tr>
+            <tr>
+                <td>lightning</td>
+                <td>Damage caused by being struck by lightning.</td>
+            </tr>
+            <tr>
+                <td>magic</td>
+                <td>Damage caused by being hit by a damage potion or spell.</td>
+            </tr>
+            <tr>
+                <td>melting</td>
+                <td>Damage caused due to a snowman melting.</td>
+            </tr>
+            <tr>
+                <td>poison</td>
+                <td>Damage caused due to an ongoing poison effect.</td>
+            </tr>
+            <tr>
+                <td>projectile</td>
+                <td>Damage caused when attacked by a projectile.</td>
+            </tr>
+            <tr>
+                <td>starvation</td>
+                <td>Damage caused by starving due to having an empty hunger bar.</td>
+            </tr>
+            <tr>
+                <td>suffocation</td>
+                <td>Damage caused by being put in a block.</td>
+            </tr>
+            <tr>
+                <td>thorns</td>
+                <td>Damage caused in retaliation to another attack by the Thorns enchantment.</td>
+            </tr>
+            <tr>
+                <td>void</td>
+                <td>Damage caused by falling into the void.</td>
+            </tr>
+            <tr>
+                <td>wither</td>
+                <td>Damage caused by Wither potion effect.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane" id="effects">
+    <h3>Potion Effects</h3>
+    <p>This is the list of entity types and a description of what they do.</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>absorption</td>
+                <td>Increases the maximum health of an entity with health that cannot be regenerated, but is refilled every 30 seconds.</td>
+            </tr>
+            <tr>
+                <td>blindness</td>
+                <td>Blinds an entity, making it pitch black for the entity.</td>
+            </tr>
+            <tr>
+                <td>confusion</td>
+                <td>Varps the vision od an entity.</td>
+            </tr>
+            <tr>
+                <td>damage_resistance</td>
+                <td>Decreases damage dealt to an entity.</td>
+            </tr>
+            <tr>
+                <td>fast_digging</td>
+                <td>Increases dig speed.</td>
+            </tr>
+            <tr>
+                <td>fire_resistance</td>
+                <td>Stops fire damage.</td>
+            </tr>
+            <tr>
+                <td>harm</td>
+                <td>Hurts an entity.</td>
+            </tr>
+            <tr>
+                <td>heal</td>
+                <td>Heals an entity.</td>
+            </tr>
+            <tr>
+                <td>health_boost</td>
+                <td>Increases the maximum health of an entity.</td>
+            </tr>
+            <tr>
+                <td>hunger</td>
+                <td>Increases hunger.</td>
+            </tr>
+            <tr>
+                <td>increase_damage</td>
+                <td>Increases damage dealt.</td>
+            </tr>
+            <tr>
+                <td>invisibility</td>
+                <td>Grants invisibility.</td>
+            </tr>
+            <tr>
+                <td>jump</td>
+                <td>Increases jump height.</td>
+            </tr>
+            <tr>
+                <td>night_vision</td>
+                <td>Allows an entity to see in the dark.</td>
+            </tr>
+            <tr>
+                <td>posion</td>
+                <td>Deals damage to an entity over time.</td>
+            </tr>
+            <tr>
+                <td>regeneration</td>
+                <td>Regenerates health.</td>
+            </tr>
+            <tr>
+                <td>saturation</td>
+                <td>Increases the food level of an entity each tick.</td>
+            </tr>
+            <tr>
+                <td>slow</td>
+                <td>Decreases movement speed.</td>
+            </tr>
+            <tr>
+                <td>slow_digging</td>
+                <td>Decreases dig speed.</td>
+            </tr>
+            <tr>
+                <td>speed</td>
+                <td>Increases movement speed.</td>
+            </tr>
+            <tr>
+                <td>water_breathing</td>
+                <td>Allows breathing underwater.</td>
+            </tr>
+            <tr>
+                <td>weakness</td>
+                <td>Decreases damage dealt by an entity.</td>
+            </tr>
+            <tr>
+                <td>wither</td>
+                <td>Deals damage to an entity over time and gives the health to the shooter.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
