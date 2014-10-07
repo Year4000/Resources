@@ -5,10 +5,62 @@ weight: 105
 ---
 
 <h3 id="teams">{{ page.title }}</h3>
-<p>
-Teams are not only teams but groups. This controls how teams
-work.
-</p>
+<p>Teams are not only teams but groups. This controls how teams work.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Default</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>name</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The map name, it should be less than <code>22</code> chars</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>color</td>
+            <td><span class="label label-info">ChatColor</span></td>
+            <td>The color of the team, used in the scoreboards.</td>
+            <td>white</td>
+        </tr>
+        <tr>
+            <td>kit</td>
+            <td><span class="label label-info">String</span></td>
+            <td>The id of the kit the team will get when they spawn in.</td>
+            <td>default</td>
+        </tr>
+        <tr>
+            <td>size</td>
+            <td><span class="label label-info">Integer</span></td>
+            <td>The max size of the team.</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>spawns</td>
+            <td><span class="label label-info">List</span></td>
+            <td>The list of region types.</td>
+            <td><span class="label label-warning">Required</span></td>
+        </tr>
+        <tr>
+            <td>friendly_fire</td>
+            <td><span class="label label-info">Boolean</span></td>
+            <td>Allow team members to attack each other.</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>friendly_invisibles</td>
+            <td><span class="label label-info">Boolean</span></td>
+            <td>Allow team members to see transparent players when they are invisibile.</td>
+            <td>True</td>
+        </tr>
+    </tbody>
+</table>
 
 {% highlight json linenos %}
 {
@@ -18,6 +70,8 @@ work.
             "color": "",
             "kit": "",
             "size": 1,
+            "friendly_fire": false,
+            "friendly_invisibles": true,
             "spawns": [
                 {"point": {"x": 0, "y": 0, "z": 0}},
                 {"min": {"x": -0, "y": 0, "z": -0},"max": {"x": 0,"y": 0,"z": 0}}
