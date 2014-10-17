@@ -33,6 +33,7 @@ tabs:
         <li><a href="#capture">Capture</a></li>
         <li><a href="#deathmatch">Deathmatch</a></li>
         <li><a href="#skywars">Skywars</a></li>
+        <li><a href="#tntwars">TNT Wars</a></li>
     </ul>
 
     <br />
@@ -297,6 +298,90 @@ tabs:
     "skywars": {
         "players_team": ""
     }
+}
+{% endhighlight %}
+        </div>
+    </div>
+    
+    <div id="tntwars" class="panel panel-default">
+        <div class="panel-heading panel-title"><b>TNT Wars</b></div>
+        <div class="panel-body">
+        <p>TNT Wars is a game where you are to make TNT Cannons and blast them to the other team isalnd to destroy it and try to kill players while you do it. But their is a wall guarding the islands you must find a way to get around it.</p>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>time_limit</td>
+                        <td><span class="label label-info">Duration</span></td>
+                        <td>The max time players have to destroy islands to win the game.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>max_score</td>
+                        <td><span class="label label-info">Integer</span></td>
+                        <td>The score needed to win the game, points are given by kills and island destuction.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>islands</td>
+                        <td><span class="label label-info">List</span></td>
+                        <td>The list of island objects to define what island belongs to whom.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "tnt_wars": {
+        "time_limit": "1h",
+        "max_score": 1500,
+        "islands": [
+          {"owner": "", "region": ""},
+          {"owner": "", "region": ""}
+        ]
+    }
+}
+{% endhighlight %}
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>owner</td>
+                        <td><span class="label label-info">String</span></td>
+                        <td>The team id that this island belongs to.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+                    <tr>
+                        <td>region</td>
+                        <td><span class="label label-info">String</span></td>
+                        <td>The region id this island is for.</td>
+                        <td><span class="label label-warning">Required</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+{% highlight json linenos %}
+{
+    "owner": "",
+    "region": ""
 }
 {% endhighlight %}
         </div>
