@@ -15,6 +15,9 @@ tabs:
   skywars:
     name: Skywars
     data: skywars
+  tntwars:
+    name: TNT Wars
+    data: tntwars
 ---
 
 <div class="tab-pane active" id="normal">
@@ -402,6 +405,134 @@ tabs:
                 {"point": {"xyz": "0, 0, 0"}},
                 {"point": {"xyz": "0, 0, 0"}}
             ]
+        }
+    }
+}
+{% endhighlight %}
+</div>
+
+<div class="tab-pane" id="tntwars">
+    <h3>TNT Wars Template</h3>
+    <p>Bellow is the basic <code>map.json</code> that you can make for TNT Wars. Due note that this game mode is recommended to apply the region events that are in the template this way. Players can not attack other players, leave their island. We also set the tnt event because whats the fun of TNT Wars if tnt is boring.</p>
+
+{% highlight json linenos %}
+{
+    "map": {
+        "name": "",
+        "version": "1.0",
+        "description": "",
+        "authors": [""]
+    },
+ 
+    "world": {
+        "spawn": [{"point": {"xyz": "0, 0, 0"}}],
+        "time_lock": "noon"
+    },
+ 
+    "games": {
+        "tnt_wars": {
+            "time_limit": "30m",
+            "max_score": 1000,
+            "islands": [
+                {"owner": "red", "region": "red_island"},
+                {"owner": "blue", "region": "blue_island"}
+            ]
+        }
+    },
+ 
+    "kits": {
+        "spawn": {
+            "armor": {
+                "helmet": {"item":"leather_helmet"},
+                "chestplate": {"item":"leather_chestplate", "nbt": {
+                    "enchantments": [
+                        {"name": "protection_explosions", "level": 2}
+                    ]
+                }},
+                "leggings": {"item":"leather_leggings"},
+                "boots": {"item":"leather_boots"}
+            },
+            "items": [
+                {"slot": 0, "item": "diamond_pickaxe"},
+                {"slot": 27, "item": "diamond_spade"},
+                {"slot": 18, "item": "diamond_axe"},
+                {"slot": 1, "item": "tnt", "amount": 64},
+                {"slot": 28, "item": "tnt", "amount": 64},
+                {"slot": 19, "item": "tnt", "amount": 64},
+                {"slot": 2, "item": "stone_button", "amount": 32},
+                {"slot": 29, "item": "wood_button", "amount": 32},
+                {"slot": 3, "item": "step", "amount": 64},
+                {"slot": 30, "item": "step", "amount": 64},
+                {"slot": 4, "item": "ladder", "amount": 48},
+                {"slot": 31, "item": "ladder", "amount": 48},
+                {"slot": 5, "item": "redstone", "amount": 64},
+                {"slot": 32, "item": "redstone", "amount": 64},
+                {"slot": 6, "item": "stone", "amount": 64},
+                {"slot": 33, "item": "stone", "amount": 64},
+                {"slot": 7, "item": "wood", "amount": 64},
+                {"slot": 34, "item": "wood", "amount": 64},
+                {"slot": 8, "item": "water_bucket"},
+                {"slot": 35, "item": "water_bucket"},
+                {"slot": 26, "item": "water_bucket"},
+                {"slot": 17, "item": "water_bucket"},
+                {"slot": 9, "item": "dispenser", "amount": 4},
+                {"slot": 10, "item": "redstone_torch_on", "amount": 32},
+                {"slot": 11, "item": "lever", "amount": 32},
+                {"slot": 20, "item": "stone_plate", "amount": 32},
+                {"slot": 13, "item": "step", "amount": 64}
+            ],
+            "effects": [{"name": "saturation", "duration": -1, "ambient": true}]
+        }
+    },
+ 
+    "regions": {
+        "global": {
+            "events": {
+                "entity_damage": {
+                    "damage_causes": ["entity_attack"],
+                    "allow": false
+                },
+                "tnt": {"throw_blocks": true},
+                "destroy": {"blocks": ["chest"], "allow": false}
+            },
+            "zones": [{"global": {}}]
+        },
+        "red_island": {
+            "events": {
+                "exit": {
+                    "apply": ["red"],
+                    "message": "region.exit.point",
+                    "allow": false
+                }
+            },
+            "zones": [{"cube": {"center": {"xyz": "0, 0, 0"}, "radius": 10, "height": 100}}]
+        },
+        "blue_island": {
+            "events": {
+                "exit": {
+                    "apply": ["blue"],
+                    "message": "region.exit.point",
+                    "allow": false
+                }
+            },
+            "zones": [{"cube": {"center": {"xyz": "0, 0, 0"}, "radius": 10, "height": 100}}]
+        }
+    },
+ 
+    "teams": {
+        "red": {
+            "name": "Red",
+            "color": "red",
+            "kit": "spawn",
+            "size": 8,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
+        },
+        "blue": {
+            "name": "Blue",
+            "color": "blue",
+            "kit": "spawn",
+            "size": 8,
+            "spawns": [{"point": {"xyz": "0, 0, 0"}}]
         }
     }
 }
