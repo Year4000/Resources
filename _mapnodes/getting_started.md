@@ -5,26 +5,27 @@ weight: 0
 ---
 
 ### Creating a Map
-You can create a map like you would do anyways, for our system MapNodes, to work with the map, it must read a file named `map.json` inside of the world folder. You may also include a 64x64 png names `icon.png` and this will be used for the ping, as used on our website. We use <a href="http://www.json.org/" target="_blank">JSON</a> to parse the maps. JSON is a simply to learn data interchangeable format. This allows us to do more than `YML` and `XML`, but still easy to learn and read. Take a look at it for help. The `map.json` has several components that make MapNodes work. Some of the parts are required and some are not. This section will tell you
+You can create a map like you would do anyways, for our system MapNodes, to work with the map, it must read a file named `map.json` inside of the world folder. You may also include a 64x64 png names `icon.png` and this will be used for the ping, as used on our website. We use [JSON](http://www.json.org/){:target="_blank"} to parse the maps. JSON is a simply to learn data interchangeable format. This allows us to do more than `YML` and `XML`, but still easy to learn and read. Take a look at it for help. The `map.json` has several components that make MapNodes work. Some of the parts are required and some are not. This section will tell you
 how each component works and if they are required or not.
+
 
 #### Folder Structor
 When you are done making the map it should follow this structure. You can see how
-the current maps work <a href="https://maps.year4000.net/" target="_blank">here</a>.
+the current maps work [here](https://maps.year4000.net/){:target="_blank"}.
 
-<pre>
-Map Name/
-  |_ world.zip
-  |   |_ region/
-  |   |_ level.dat
-  |_ map.json
-  |_ icon.png
-</pre>
+    Map Name/
+      |_ world.zip
+      |   |_ region/
+      |   |_ level.dat
+      |_ map.json
+      |_ icon.png
 
-### Json Types
-Json lets you store data that is assigned a key. This key is used by `MapNodes` to describe how to act in that action.
+
+
+{% capture types %}
 
 {% capture content %}
+
 *Object* is the main element of a map, the object has Map values in it. Each map value is seperated by commas.
 
 {% highlight json %}
@@ -37,6 +38,7 @@ Json lets you store data that is assigned a key. This key is used by `MapNodes` 
 
 
 {% capture content %}
+
 *List* is a collection of values. You may place any value in the array just like the map. Though are added with out the need of another key value set.
 
 **Objects**
@@ -60,6 +62,7 @@ Json lets you store data that is assigned a key. This key is used by `MapNodes` 
 
 
 {% capture content %}
+
 *Map* is the core of JSON, each value is given a key. This key is the description of the the value. The value may be any of the following. Maps are contained wiht in an object and are like arrays but are given a key.
 
 **Object**
@@ -93,6 +96,7 @@ Json lets you store data that is assigned a key. This key is used by `MapNodes` 
 
 
 {% capture content %}
+
 *String* is text that can be used in a number of ways. Keys are string values for one instance. With strings we have a couble of subsets we use them for. Corident are comma seperated values that tell the x, y, z. Durations are numbers with a suffix of a letter s (sec), m (min), h (hour). You can combine durations to give more acuracy `5m30s`.
 
 **Normal**
@@ -116,6 +120,7 @@ Json lets you store data that is assigned a key. This key is used by `MapNodes` 
 
 
 {% capture content %}
+
 *Numbers* are values of numbers they can be Integer (Whole numers) or Double (Decimals).
 
 **Integer**
@@ -134,6 +139,7 @@ Json lets you store data that is assigned a key. This key is used by `MapNodes` 
 
 
 {% capture content %}
+
 *Boolean* is a state value it tell if the feature is active or disabled.
 
 {% highlight properties %}
@@ -146,3 +152,7 @@ Json lets you store data that is assigned a key. This key is used by `MapNodes` 
 
 {% endcapture %}
 {% include panel.html title="Boolean" content=content %}
+
+{% endcapture %}
+{% include panel.html title="Json Types" content=types %}
+

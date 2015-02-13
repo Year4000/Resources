@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <div class="panel-heading panel-title"><b>{{ include.title }}</b></div>
     <div class="panel-body">
-        {{ include.content }}
+        {{ include.content | markdownify }}
     </div>
 </div>
