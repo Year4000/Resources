@@ -1,0 +1,148 @@
+---
+title: Getting Started
+layout: default
+weight: 0
+---
+
+### Creating a Map
+You can create a map like you would do anyways, for our system MapNodes, to work with the map, it must read a file named `map.json` inside of the world folder. You may also include a 64x64 png names `icon.png` and this will be used for the ping, as used on our website. We use <a href="http://www.json.org/" target="_blank">JSON</a> to parse the maps. JSON is a simply to learn data interchangeable format. This allows us to do more than `YML` and `XML`, but still easy to learn and read. Take a look at it for help. The `map.json` has several components that make MapNodes work. Some of the parts are required and some are not. This section will tell you
+how each component works and if they are required or not.
+
+#### Folder Structor
+When you are done making the map it should follow this structure. You can see how
+the current maps work <a href="https://maps.year4000.net/" target="_blank">here</a>.
+
+<pre>
+Map Name/
+  |_ world.zip
+  |   |_ region/
+  |   |_ level.dat
+  |_ map.json
+  |_ icon.png
+</pre>
+
+### Json Types
+Json lets you store data that is assigned a key. This key is used by `MapNodes` to describe how to act in that action.
+
+{% capture content %}
+*Object* is the main element of a map, the object has Map values in it. Each map value is seperated by commas.
+
+{% highlight json %}
+{ }
+{% endhighlight %}
+
+{% endcapture %}
+{% include panel.html title="Object" content=content %}
+
+
+
+{% capture content %}
+*List* is a collection of values. You may place any value in the array just like the map. Though are added with out the need of another key value set.
+
+**Objects**
+{% highlight json %}
+[{ }, { }]
+{% endhighlight %}
+
+**Strings**
+{% highlight json %}
+["Text 1", "Text 2"]
+{% endhighlight %}
+
+**Numbers**
+{% highlight json %}
+[1, 2]
+{% endhighlight %}
+
+{% endcapture %}
+{% include panel.html title="List" content=content %}
+
+
+
+{% capture content %}
+*Map* is the core of JSON, each value is given a key. This key is the description of the the value. The value may be any of the following. Maps are contained wiht in an object and are like arrays but are given a key.
+
+**Object**
+{% highlight properties %}
+"key": {}
+{% endhighlight %}
+
+**List**
+{% highlight properties %}
+"key": []
+{% endhighlight %}
+
+**String**
+{% highlight properties %}
+"key": "value"
+{% endhighlight %}
+
+**Number**
+{% highlight properties %}
+"key": 1
+{% endhighlight %}
+
+**Boolean**
+{% highlight properties %}
+"key": true
+{% endhighlight %}
+
+{% endcapture %}
+{% include panel.html title="Map" content=content %}
+
+
+
+{% capture content %}
+*String* is text that can be used in a number of ways. Keys are string values for one instance. With strings we have a couble of subsets we use them for. Corident are comma seperated values that tell the x, y, z. Durations are numbers with a suffix of a letter s (sec), m (min), h (hour). You can combine durations to give more acuracy `5m30s`.
+
+**Normal**
+{% highlight properties %}
+"key": "This is a string"
+{% endhighlight %}
+
+**Corident**
+{% highlight properties %}
+"key": "0, 0, 0"
+{% endhighlight %}
+
+**Duration**
+{% highlight properties %}
+"key": "1m"
+{% endhighlight %}
+
+{% endcapture %}
+{% include panel.html title="String" content=content %}
+
+
+
+{% capture content %}
+*Numbers* are values of numbers they can be Integer (Whole numers) or Double (Decimals).
+
+**Integer**
+{% highlight properties %}
+"key": 1
+{% endhighlight %}
+
+**Double**
+{% highlight properties %}
+"key": 1.5
+{% endhighlight %}
+
+{% endcapture %}
+{% include panel.html title="Numbers" content=content %}
+
+
+
+{% capture content %}
+*Boolean* is a state value it tell if the feature is active or disabled.
+
+{% highlight properties %}
+"key": true
+{% endhighlight %}
+
+{% highlight properties %}
+"key": false
+{% endhighlight %}
+
+{% endcapture %}
+{% include panel.html title="Boolean" content=content %}
