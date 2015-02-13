@@ -17,11 +17,14 @@
     </div>
     <ul class="nav-sidebar">
         {% for group in site.collections %}
-            <li class="nav-sidebar-header">{{ group[1].name }}</li>
-            {% assign group_content = group[1].docs | sort: 'weight' %}
-            {% for section in group_content %}
-                <li><a href="{{ section.url }}">{{ section.title }}</a></li>
-            {% endfor %}
+            <li class="nav-sidebar-header" data-toggle="collapse" data-target="#{{ group[1].name }}-Items">{{ group[1].name }}</li>
+
+            <div id="{{ group[1].name }}-Items" class="{% if group[0] == page.collection %}in{% else %}collapse{% endif%}">
+                {% assign group_content = group[1].docs | sort: 'weight' %}
+                {% for section in group_content %}
+                    <li><a href="{{ section.url }}">{{ section.title }}</a></li>
+                {% endfor %}
+            </div>
         {% endfor %}
     </ul>
 </aside>
