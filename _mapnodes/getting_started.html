@@ -42,19 +42,23 @@ the current maps work [here](https://maps.year4000.net/){:target="_blank"}.
 *List* is a collection of values. You may place any value in the array just like the map. Though are added with out the need of another key value set.
 
 **Objects**
+
 {% highlight json %}
 [{ }, { }]
 {% endhighlight %}
 
 **Strings**
+
 {% highlight json %}
 ["Text 1", "Text 2"]
 {% endhighlight %}
 
 **Numbers**
+
 {% highlight json %}
 [1, 2]
 {% endhighlight %}
+
 
 {% endcapture %}
 {% include panel.html title="List" content=content %}
@@ -66,26 +70,31 @@ the current maps work [here](https://maps.year4000.net/){:target="_blank"}.
 *Map* is the core of JSON, each value is given a key. This key is the description of the the value. The value may be any of the following. Maps are contained wiht in an object and are like arrays but are given a key.
 
 **Object**
+
 {% highlight properties %}
 "key": {}
 {% endhighlight %}
 
 **List**
+
 {% highlight properties %}
 "key": []
 {% endhighlight %}
 
 **String**
+
 {% highlight properties %}
 "key": "value"
 {% endhighlight %}
 
 **Number**
+
 {% highlight properties %}
 "key": 1
 {% endhighlight %}
 
 **Boolean**
+
 {% highlight properties %}
 "key": true
 {% endhighlight %}
@@ -100,16 +109,19 @@ the current maps work [here](https://maps.year4000.net/){:target="_blank"}.
 *String* is text that can be used in a number of ways. Keys are string values for one instance. With strings we have a couble of subsets we use them for. Corident are comma seperated values that tell the x, y, z. Durations are numbers with a suffix of a letter s (sec), m (min), h (hour). You can combine durations to give more acuracy `5m30s`.
 
 **Normal**
+
 {% highlight properties %}
 "key": "This is a string"
 {% endhighlight %}
 
 **Corident**
+
 {% highlight properties %}
 "key": "0, 0, 0"
 {% endhighlight %}
 
 **Duration**
+
 {% highlight properties %}
 "key": "1m"
 {% endhighlight %}
@@ -124,11 +136,13 @@ the current maps work [here](https://maps.year4000.net/){:target="_blank"}.
 *Numbers* are values of numbers they can be Integer (Whole numers) or Double (Decimals).
 
 **Integer**
+
 {% highlight properties %}
 "key": 1
 {% endhighlight %}
 
 **Double**
+
 {% highlight properties %}
 "key": 1.5
 {% endhighlight %}
