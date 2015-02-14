@@ -328,57 +328,22 @@ tabs:
     },
 
     "games": {
-        "skywars": {
-            "players_team": "players"
-        }
+        "skywars": {}
     },
 
     "regions": {
         "global": {
             "events": {
+                "tnt": {"throw_blocks": true},
+                "creature_spawns": {"creatures": ["snowman"], "allow": true},
                 "chest": {
-                    "items": [
-                        {"item": "stone_sword"},
-                        {"item": "iron_sword"},
-                        {"item": "wood_sword"},
-                        {"item": "wood", "damage": 2, "amount": 10},
-                        {"item": "wood", "damage": 2, "amount": 10},
-                        {"item": "wood", "damage": 2, "amount": 5},
-                        {"item": "wood", "damage": 2, "amount": 5},
-                        {"item": "wood", "damage": 2, "amount": 2},
-                        {"item": "wood", "damage": 2, "amount": 2},
-                        {"item": "carrot_item", "amount": 3},
-                        {"item": "potato_item", "amount": 3},
-                        {"item": "arrow", "amount": 3},
-                        {"item": "arrow"},
-                        {"item": "bow"},
-                        {"item": "lava_bucket"},
-                        {"item": "water_bucket"},
-                        {"item": "egg", "amount": 4},
-                        {"item": "egg", "amount": 3},
-                        {"item": "egg", "amount": 2},
-                        {"item": "egg"},
-                        {"item": "snow_ball", "amount": 4},
-                        {"item": "snow_ball", "amount": 3},
-                        {"item": "snow_ball", "amount": 2},
-                        {"item": "snow_ball"},
-                        {"item": "ender_pearl"},
-                        {"item": "tnt", "amount": 2},
-                        {"item": "tnt"},
-                        {"item": "string"},
-                        {"item": "string"},
-                        {"item": "web"},
-                        {"item": "web"},
-                        {"item": "fishing_rod"},
-                        {"item": "fishing_rod"},
-                        {"item": "iron_spade"},
-                        {"item": "iron_pickaxe"},
-                        {"item": "iron_axe"},
-                        {"item": "iron_spade"},
-                        {"item": "iron_pickaxe"},
-                        {"item": "iron_axe"}
-                    ],
-                    "amount": 9
+                    "kits": [
+                        {"name": "skywars_armor", "amount": 2},
+                        {"name": "skywars_wepons", "amount": 2},
+                        {"name": "skywars_blocks", "amount": 3, "repeat": true},
+                        {"name": "skywars_food", "amount": 1},
+                        {"name": "skywars_items", "amount": 4, "repeat": true}
+                    ]
                 }
             },
             "zones": [{"global": {}}]
@@ -389,7 +354,6 @@ tabs:
         "players": {
             "name": "Players",
             "color": "green",
-            "size": 12,
             "spawns": [
                 {"point": {"xyz": "0, 0, 0"}},
                 {"point": {"xyz": "0, 0, 0"}},
