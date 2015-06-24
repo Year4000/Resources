@@ -1,0 +1,25 @@
+---
+title: Auth Route
+layout: api
+weight: 102
+---
+
+
+# {{ page.title }}
+To grab an account key you need to send a **POST** request to the following url **https://api.year4000.net/auth/login**. You will need to send a **JSON** as the request data. There are two fields in the **JSON** string and they are `email` and `password`. To get the email and password you must have your [account registered](https://www.year4000.net/login).
+
+Once the request is send the page will resonde with a **JSON** object that contains the account id as `account` and the UUID key as `key`.
+
+### Data to send with request
+{% capture content %}
+{"email": "someone@example.com", "password": "P@ssw0rd"}
+<script type="text/javascript">prettyPrint()</script>
+{% endcapture %}
+{% include api_callback.html method="POST" url="https://api.year4000.net/auth/login" title="JSON POST Data" content=content %}
+
+### Response data
+{% capture content %}
+{"account": "54c42e56a6946f3da632e6b3", "key": "00000000-0000-0000-0000000000"}
+<script type="text/javascript">prettyPrint()</script>
+{% endcapture %}
+{% include api_callback.html method="POST" url="https://api.year4000.net/auth/login" title="Example Response" content=content %}
