@@ -16,6 +16,10 @@ markdown: kramdown
 
 # Collections
 collections:
+  api:
+    name: API
+    output: true
+    permalink: /api/:path/
   mapnodes:
     name: MapNodes
     output: true

@@ -1,0 +1,33 @@
+---
+title: Public API
+layout: api
+weight: 100
+---
+
+# {{ page.title }}
+
+View the API server in action:
+[api.year4000.net](https://api.year4000.net)
+
+
+### About
+Here at Year4000 we provide a simple public API server to pull info from our systems. This allows for external developers and internal developers to build cool stuff.
+
+
+### Security
+Each request is layed under **SSL** and protected by **CloudFlare**.
+
+
+### Global Query
+Every request has a few query paramerters to change the outcome of the API.
+
+- `?compact` This will make the request compact leading to smaller requests.
+- `?callback=METHOD` Using jsonp the request will call a jsonp function. **METHOD** is the name of the method that will be called.
+- `?key=KEY` Some requests provided extra data that needs a key to access. **KEY** is a UUID generated key from the [auth route](/api/auth).
+
+
+### Realtime Sample Request
+{% capture content %}
+<script type="text/javascript" src="https://api.year4000.net/?callback=write"></script>
+{% endcapture %}
+{% include api_callback.html method="GET" url="https://api.year4000.net" title="API Request" content=content %}

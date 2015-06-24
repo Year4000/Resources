@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+<script type="text/javascript">
+/** Write the jsonp right where it was called */
+var write = function(output) {
+    var stringify = JSON.stringify(output, null, 4);
+    document.write(stringify);
+    prettyPrint();
+};
+</script>
+
+{% include sidebar.html %}
+
+<section>
+<article>
+
+{{ content | markdownify }}
+
+</article>
+</section>
+
+{% include footer.html %}
+
+</body>
+</html>

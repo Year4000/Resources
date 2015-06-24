@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+    <div class="panel-heading panel-title">
+        <b>{{ include.title }}</b>
+    </div>
+    <pre class="prettyprint linenums">{{ include.content | strip_newlines }}</pre>
+    <div class="panel-footer">
+        <b>{{ include.method }}</b> - 
+        <i>{{ include.url }}</i>
+    </div>
+</div>
