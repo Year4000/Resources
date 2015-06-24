@@ -1,0 +1,27 @@
+---
+title: Accounts Route
+layout: api
+weight: 101
+---
+
+# {{ page.title }}
+Quering account data is very simple. This route will grab extra data if supplied an [API key](/api/auth).
+
+
+#### Routes
+- `/accounts` - *Retrives a list of the account stats and the latest **25** accounts*
+- `/accounts?page=2` - *Page between the accounts*
+- `/accounts/{ID}` - *Get an account by either their **UUID**, **USERNAME**, **ID**.*
+- `/accounts/{ID}?key=KEY` - *Get private data reguarding the specific account*
+
+### Live Examples
+
+{% capture content %}
+<script type="text/javascript" src="https://api.year4000.net/accounts?callback=write"></script>
+{% endcapture %}
+{% include api_callback.html method="GET" url="https://api.year4000.net/accounts{?page}" title="Accounts Request" content=content %}
+
+{% capture content %}
+<script type="text/javascript" src="https://api.year4000.net/accounts/ewized?callback=write"></script>
+{% endcapture %}
+{% include api_callback.html method="GET" url="https://api.year4000.net/accounts/{id}" title="Account ewized Request" content=content %}
